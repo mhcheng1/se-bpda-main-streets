@@ -9,9 +9,9 @@ class Business(db.Model):
     status = db.Column(db.String())
 
     def __init__(self, object_id, name, status):
-        self.object_id = name
+        self.object_id = object_id
         self.name = name
-        self.status
+        self.status = status
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
@@ -29,8 +29,8 @@ class Location(db.Model):
 
     b_id = db.Column(db.Integer, db.ForeignKey('business.object_id'), primary_key=True)
     street = db.Column(db.String(), primary_key=True)
-    longitude = db.Column(db.Float())
-    lattitude = db.Column(db.Float())
+    longitude = db.Column(db.String())
+    lattitude = db.Column(db.String())
     postal = db.Column(db.Integer)
     
     def __init__(self, b_id, street, longitude, lattitude, postal):
