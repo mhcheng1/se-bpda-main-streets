@@ -117,19 +117,19 @@ class Industry(db.Model):
     __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
-    NAICS = db.Column(db.Integer)
-    F2_2017 = db.Column(db.Integer)
-    F2_2017_n = db.Column(db.String())
-    F2_digit = db.Column(db.Integer)
-    F2_digit_n = db.Column(db.String())
+    naics = db.Column(db.Integer)
+    f2_2017 = db.Column(db.Integer)
+    f2_2017_n = db.Column(db.String())
+    f2_digit = db.Column(db.Integer)
+    f2_digit_n = db.Column(db.String())
 
-    def __init__(self, id, NAICS, F2_2017, F2_2017_n, F2_digit, F2_digit_n):
+    def __init__(self, id, naics, f2_2017, f2_2017_n, f2_digit, f2_digit_n):
         self.id = id
-        self.NAICS = NAICS
-        self.F2_2017 = F2_2017
-        self.F2_2017_n = F2_2017_n
-        self.F2_digit = F2_digit
-        self.F2_digit_n= F2_digit_n
+        self.naics = naics
+        self.f2_2017 = f2_2017
+        self.f2_2017_n = f2_2017_n
+        self.f2_digit = f2_digit
+        self.f2_digit_n= f2_digit_n
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
@@ -137,12 +137,13 @@ class Industry(db.Model):
     def serialize(self):
         return {
             'id': self.id,
-            'NAICS': self.NAICS,
-            'F2_2017': self.F2_2017,
-            'F2_2017_n': self.F2_2017_n,
-            'F2_digit': self.F2_digit,
-            'F2_digit_n': self.F2_digit_n,
+            'naics': self.NAICS,
+            'f2_2017': self.f2_2017,
+            'f2_2017_n': self.f2_2017_n,
+            'f2_digit': self.f2_digit,
+            'f2_digit_n': self.f2_digit_n,
         }
+
 
 class Busi_industry(db.Model):
     __tablename__ = 'busi_industry'
