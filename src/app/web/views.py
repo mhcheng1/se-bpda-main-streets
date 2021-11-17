@@ -1,29 +1,8 @@
-import os
-from flask_table import Table, Col
-from flask import Flask, jsonify, request, render_template
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import text
-import json
-from flask_migrate import Migrate
-
-app = Flask(__name__)
-
-app_settings = os.getenv(
-    'APP_SETTINGS',
-    'config.Config'
-)
-app.config.from_object(app_settings)
-db = SQLAlchemy(app)
-
+from flask import Flask, render_template
 from models import Business, Location, Online_profile, Busi_online, Busi_online, Industry, Busi_industry
-migrate = Migrate(app, db)
-
-class ItemTable1(Table):
-    name = Col('Name of Business')
-
-class ItemTable2(Table):
-    name = Col('Name of Business')
-    street = Col('Address')
+from . import mainstreet
+import json
+from app import db
 
 def create_geoJSON():
     try:
@@ -39,21 +18,20 @@ def create_geoJSON():
             temp_set["properties"] = properties_set
             temp_set["geometry"] = geometry_set
             g_json["features"].append(temp_set)
-        geo_file = open("../geoJsonFiles/washington_gate_busi.json", "w")
+        geo_file = open("../../geoJsonFiles/washington_gate_busi.json", "w")
         json.dump(g_json, geo_file)
         geo_file.close()
         return "Worked!"
     except Exception as e:
         return(str(e))
 
-@app.route("/")
+@mainstreet.route("/")
 def root_site():
-        return "Main Page"
+    return "Main Page"
 
-@app.route("/WashingtonGate")
+@mainstreet.route("/WashingtonGate")
 def generate_map():
     try:
         return create_geoJSON()
     except Exception as e:
         return(str(e))
-

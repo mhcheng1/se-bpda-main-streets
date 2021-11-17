@@ -1,0 +1,1 @@
+#app/app:create_app('default')
