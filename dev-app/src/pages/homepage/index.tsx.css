@@ -1,0 +1,30 @@
+.span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.block1 {
+    display: flexbox;
+    align-items:baseline;
+    margin: 40px;
+}
+
+.map-component {
+    position: absolute;
+    left: 20px;
+}
+
+.list {
+    text-align: right;
+    margin-right: 40px;
+}
+
+.name {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.type {
+    font-weight: 100;
+    margin-bottom: 20px;
+}
