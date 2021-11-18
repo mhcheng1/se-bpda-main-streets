@@ -9,12 +9,13 @@ from . import mainstreet
 import json
 from app import db
 
-def create_geoJSON():
+def create_geoJSON(mainstreet):
     try:
+        file_name = "../geoJsonFiles/" + mainstreet + ".json"
         g_json = dict()
         g_json["type"] = "FeatureCollection"
         g_json["features"] = []
-        items = db.session.query(Business.object_id, Business.name, Location.longitude, Location.lattitude).filter(Business.object_id == Location.b_id).all()
+        items = db.session.query(Business.object_id, Business.name, Location.longitude, Location.lattitude).filter(Business.object_id == Location.b_id).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == mainstreet).all()
         for row in items:
             properties_set = {"object_id": row[0], "name": row[1]}
             geometry_set = {"type": "Point", "coordinates": [float(row[2]), float(row[3])]}
@@ -23,19 +24,15 @@ def create_geoJSON():
             temp_set["properties"] = properties_set
             temp_set["geometry"] = geometry_set
             g_json["features"].append(temp_set)
-        geo_file = open("../../geoJsonFiles/washington_gate_busi.json", "w")
+        geo_file = open(file_name, "w")
         json.dump(g_json, geo_file)
+        display = json.dumps(g_json, indent=4)
         geo_file.close()
-        return "Worked!"
+        return g_json
     except Exception as e:
         return(str(e))
 
-@mainstreet.route("/")
-def root_site():
-    return "Main Page"
-
-@mainstreet.route("/WashingtonGate")
-def generate_map():
+def generate_graph():
     try:
         items = db.session.query(Business.naics_2_title, (func.count(Business.naics_2_title)).label('Number')).group_by(Business.naics_2_title).all()
         industry = []
@@ -63,13 +60,18 @@ def generate_map():
             yaxis_title = "Industries"
         )
         fig.show()
-        return create_geoJSON()
+        return "Rendering graph in other page"
     except Exception as e:
         return(str(e))
 
+@mainstreet.route("/")
+def root_site():
+    return "Main Page"
+
+@mainstreet.route("/WashingtonGate")
+def washington():
+    return generate_graph()
+
 @mainstreet.route("/Brighton")
 def brighton():
-    try:
-        return create_geoJSON('Brighton')
-    except Exception as e:
-        return(str(e))
+    return create_geoJSON('Brighton')
