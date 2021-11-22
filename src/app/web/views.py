@@ -1,77 +1,128 @@
-import numpy as np 
-import plotly.graph_objects as go
+from geojson import Feature, Point, FeatureCollection
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text, func 
 from flask import Flask, render_template
 from sqlalchemy.sql.roles import BinaryElementRole
 from models import Business, Location, Mainstreet, BusiMain, OnlineProfile, BusiOnline
 from . import mainstreet
-import json
 from app import db
 
-def create_geoJSON(mainstreet):
-    try:
-        file_name = "../geoJsonFiles/" + mainstreet + ".json"
-        g_json = dict()
-        g_json["type"] = "FeatureCollection"
-        g_json["features"] = []
-        items = db.session.query(Business.object_id, Business.name, Location.longitude, Location.lattitude).filter(Business.object_id == Location.b_id).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == mainstreet).all()
-        for row in items:
-            properties_set = {"object_id": row[0], "name": row[1]}
-            geometry_set = {"type": "Point", "coordinates": [float(row[2]), float(row[3])]}
-            temp_set = dict()
-            temp_set["type"] = "Feature"  
-            temp_set["properties"] = properties_set
-            temp_set["geometry"] = geometry_set
-            g_json["features"].append(temp_set)
-        geo_file = open(file_name, "w")
-        json.dump(g_json, geo_file)
-        display = json.dumps(g_json, indent=4)
-        geo_file.close()
-        return g_json
-    except Exception as e:
-        return(str(e))
 
-def generate_graph():
+def create_geoJSON(ms):
     try:
-        items = db.session.query(Business.naics_2_title, (func.count(Business.naics_2_title)).label('Number')).group_by(Business.naics_2_title).all()
+        items = db.session.query(Business.object_id, Business.name, Location.longitude, Location.lattitude).filter(Business.object_id == Location.b_id).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).all()
+        feature_lst = []
+        for row in items:
+            feature = Feature(geometry=Point((float(row[2]), float(row[3]))), properties={'id': row[0], 'name': row[1]})
+            feature_lst.append(feature)
+        feature_collection = FeatureCollection(feature_lst)
+        return feature_collection
+    except Exception as e:
+        return (str(e))
+
+def industry_count(ms):
+    try:
+        items = db.session.query(Business.naics_2_title, (func.count(Business.naics_2_title)).label('Number')).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).group_by(Business.naics_2_title).all()
+        graph = dict()
         industry = []
         number = []
         for tuple in items:
             industry.append(tuple[0])
             number.append(tuple[1])
-        # fig = plt.figure(figsize = (30,10))
-        # plt.barh(industry, number, color = 'blue')
-        # plt.xlabel("Number of Businesses")
-        # plt.ylabel("Industries")
-        # plt.title("Number of Businesses in Each Industry in Washington Gate")
-        # plt.savefig('bar-chart.png')
-        # fig, ax = plt.subplots()
-        # mpld3.fig_to_html(fig, d3_url=None, mpld3_url=None, no_extras=False, template_type='general', figid=None, use_http=False)
-        # mpld3.show()
-
-        fig = go.Figure(go.Bar(
-            x=number,
-            y=industry,
-            orientation='h'))
-        fig.update_layout(
-            title = "Number of Businesses by Industry in Washington Gate",
-            xaxis_title = "Number of Businesses",
-            yaxis_title = "Industries"
-        )
-        fig.show()
-        return "Rendering graph in other page"
+        graph["title"] = "Number of Businesses by Industry"
+        graph["x_axis"] = number
+        graph["y_axis"] = industry
+        
+        return graph
     except Exception as e:
-        return(str(e))
+        return (str(e))
+
+def collect_json(ms):
+    data = dict()
+    data["geo"] = create_geoJSON(ms)
+    data["industry_graph"] = industry_count(ms)
+    return data
 
 @mainstreet.route("/")
 def root_site():
-    return "Main Page"
+    return {"test": "Home Page"}
 
-@mainstreet.route("/WashingtonGate")
-def washington():
-    return generate_graph()
-
-@mainstreet.route("/Brighton")
+@mainstreet.route("/brighton")
 def brighton():
-    return create_geoJSON('Brighton')
+    return collect_json("Brighton")
+
+@mainstreet.route("/washingtongateway")
+def washington_gate():
+    return collect_json("Washington St Gateway")
+
+@mainstreet.route("/fourcorners")
+def four_corners():
+    return collect_json("Four Corners")
+
+@mainstreet.route("/allstonvillage")
+def allston_village():
+    return collect_json("Allston Village")
+
+@mainstreet.route("/eastboston")
+def east_boston():
+    return collect_json("East Boston")
+
+@mainstreet.route("/threesquares")
+def three_squares():
+    return collect_json("Three Squares")
+
+@mainstreet.route("/roslindalevillage")
+def roslindale_village():
+    return collect_json("Roslindale Village")
+
+@mainstreet.route("/fieldscorner")
+def fields_corner():
+    return collect_json("Fields Corner")
+
+@mainstreet.route("/uphamscorner")
+def uphams_corner():
+    return collect_json("Uphams Corner")
+
+@mainstreet.route("/greaterashmont")
+def greater_ashmont():
+    return collect_json("Greater Ashmont")
+
+@mainstreet.route("/chinatown")
+def chinatown():
+    return collect_json("Chinatown")
+
+@mainstreet.route("/bowdoingeneva")
+def bowdoin_geneva():
+    return collect_json("Bowdoin/Geneva")
+
+@mainstreet.route("/mattapan")
+def mattapan():
+    return collect_json("Mattapan")
+
+@mainstreet.route("/hydepark")
+def hyde_park():
+    return collect_json("Hyde Park")
+
+@mainstreet.route("/eglestonsquare")
+def egleston_square():
+    return collect_json("Egleston Square")
+
+@mainstreet.route("/centresouth")
+def centre_south():
+    return collect_json("Centre/South")
+
+@mainstreet.route("/westroxbury")
+def west_roxbury():
+    return collect_json("West Roxbury")
+
+@mainstreet.route("/dudleysquare")
+def dudley_square():
+    return collect_json("Dudley Square")
+
+@mainstreet.route("/missionhill")
+def mission_hill():
+    return collect_json("Mission Hill")
+
+@mainstreet.errorhandler(404)
+def page_not_found(e):
+    return "404 Page not Found"
