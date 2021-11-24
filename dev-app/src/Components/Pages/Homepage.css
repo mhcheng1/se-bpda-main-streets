@@ -10,18 +10,8 @@
 }
 
 .map-component {
-    position: absolute;
-    left: 20px;
-}
-
-.list {
-    text-align: right;
-    margin-right: 40px;
-}
-
-.name {
-    font-size: 15px;
-    font-weight: bold;
+    position: right;
+    right: 200px;
 }
 
 .type {

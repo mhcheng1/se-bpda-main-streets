@@ -1,12 +1,18 @@
+import Homepage from "./Components/Pages/Hompage";
+import Brighton from "./Components/Pages/Brighton";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import React from 'react';
-import './App.css';
-import {Homepage} from './pages/homepage';
 
 function App() {
   return (
-    <div className="App">
-      <p> BPDA Main Streets</p>
-      <Homepage />
+    <div>
+      <Router>
+        <br />
+        <Routes>
+            <Route path='/' element={<Homepage/>} />
+            <Route path='/brighton' element={<Brighton/>} />
+        </Routes>
+      </Router>
     </div>
   );
 }
