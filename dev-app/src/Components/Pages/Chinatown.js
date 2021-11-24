@@ -2,9 +2,9 @@ import React from 'react';
 import MainstreetMap from '../MainstreetMap';
 
 function Map() { 
-    const [brighton_data, setData] = React.useState([]);
+    const [chinatown_data, setData] = React.useState([]);
     React.useEffect(() => {
-        fetch('http://35.168.164.33:5000/brighton')
+        fetch('http://35.168.164.33:5000/chinatown')
         .then(response => response.json())
         .then(data => {
             setData(data.geo.features)
@@ -12,14 +12,14 @@ function Map() {
         .catch(error => console.log(error));
     }, {});
 
-    return (MainstreetMap(brighton_data, [42.35, -71.16], 15));
+    return (MainstreetMap(chinatown_data, [42.3515, -71.061], 17));
 }
 
-function Brighton() {
+function Chinatown() {
 
     return (
         <div>
-            <span className="span">Brighton Homepage</span>
+            <span className="span">Chinatown Page</span>
             <div className="block1">
                 <div className="map-component"><Map /></div>
             </div>
@@ -27,4 +27,4 @@ function Brighton() {
     );
 }
 
-export default Brighton;
+export default Chinatown;
