@@ -13,7 +13,7 @@ def create_geoJSON(ms):
         items = db.session.query(Business.object_id, Business.name, Location.longitude, Location.lattitude).filter(Business.object_id == Location.b_id).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).all()
         feature_lst = []
         for row in items:
-            feature = Feature(geometry=Point((float(row[2]), float(row[3]))), properties={'id': row[0], 'name': row[1]})
+            feature = Feature(geometry=Point((float(row[3]), float(row[2]))), properties={'id': row[0], 'name': row[1]})
             feature_lst.append(feature)
         feature_collection = FeatureCollection(feature_lst)
         return feature_collection
@@ -24,15 +24,14 @@ def industry_count(ms):
     try:
         items = db.session.query(Business.naics_2_title, (func.count(Business.naics_2_title)).label('Number')).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).group_by(Business.naics_2_title).all()
         graph = dict()
-        industry = []
-        number = []
+        lst = []
         for tuple in items:
-            industry.append(tuple[0])
-            number.append(tuple[1])
+            temp = {}
+            temp["industry"] = tuple[0]
+            temp["business_num"] = tuple[1]
+            lst.append(temp)
         graph["title"] = "Number of Businesses by Industry"
-        graph["x_axis"] = number
-        graph["y_axis"] = industry
-        
+        graph["data"] = lst
         return graph
     except Exception as e:
         return (str(e))
