@@ -1,7 +1,5 @@
 import React from 'react';
-import MainstreetMap from '../MainstreetMap';
-import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from "recharts";
-  
+import MainstreetMap from '../MainstreetMap'; 
 
 function Map() { 
     const [business_data, setData] = React.useState([]);
