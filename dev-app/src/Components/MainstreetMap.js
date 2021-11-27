@@ -25,7 +25,7 @@ function MainstreetMap(district_data, map_coor, map_zoom) {
           />
           <GeoJSON style={districtStyle} data={msdistricts} />
           {district_data.map((item) =>
-              <Marker position={[item.geometry.coordinates[1], item.geometry.coordinates[0]]}>
+              <Marker position={item.geometry.coordinates}>
                   <Popup> This is the business: {item.properties.name} </Popup>
               </Marker>
            )}

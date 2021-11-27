@@ -1,8 +1,10 @@
 import React from 'react';
 import MainstreetMap from '../MainstreetMap';
+import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from "recharts";
+  
 
 function Map() { 
-    const [chinatown_data, setData] = React.useState([]);
+    const [business_data, setData] = React.useState([]);
     React.useEffect(() => {
         fetch('http://35.168.164.33:5000/chinatown')
         .then(response => response.json())
@@ -12,7 +14,7 @@ function Map() {
         .catch(error => console.log(error));
     }, {});
 
-    return (MainstreetMap(chinatown_data, [42.3515, -71.061], 17));
+    return (MainstreetMap(business_data, [42.3515, -71.061], 17));
 }
 
 function Chinatown() {
