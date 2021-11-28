@@ -1,7 +1,10 @@
 import React from 'react';
 import MainstreetMap from '../MainstreetMap';
+import NavigationBar from '../MSNavbar';
 import './Layout.css'
-import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from "recharts";
+import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip} from "recharts";
+import {Container} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -23,32 +26,30 @@ function BusinessData() {
 }
 
 function Brighton() {
-
     const business = BusinessData();
-
     return (
         <div>
-            <span className="span">Brighton Homepage</span>
+            <Container><NavigationBar /></Container>
             <div className="map"> {business[0]} </div>
             <div className="graph1">
-                    <BarChart
-                        width={400}
-                        height={300}
-                        data={business[1]}
-                        margin={{
-                            top: 5,
-                            right: 30,
-                            left: 20,
-                            bottom: 5
-                        }}
-                        >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="industry" />
-                        <YAxis />
-                        <Tooltip />
-                        <Bar dataKey="business_num" fill="#8884d8" />
-                    </BarChart>
-                </div>
+                <BarChart
+                    width={400}
+                    height={300}
+                    data={business[1]}
+                    margin={{
+                        top: 5,
+                        right: 30,
+                        left: 20,
+                        bottom: 5
+                    }}
+                    >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="industry" />
+                    <YAxis />
+                    <Tooltip />
+                    <Bar dataKey="business_num" fill="#8884d8" />
+                </BarChart>
+            </div>
         </div>
     );
 }

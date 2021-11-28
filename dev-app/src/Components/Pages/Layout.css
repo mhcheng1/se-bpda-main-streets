@@ -1,5 +1,11 @@
+.map {
+  display: flexbox;
+  align-items:baseline;
+  margin: 30px;
+}
+
 .graph1 {
     position: absolute;
     left: 700px;
-    top: 70px;
+    top: 100px;
   }

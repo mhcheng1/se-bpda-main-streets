@@ -6,7 +6,7 @@
 .block1 {
     display: flexbox;
     align-items:baseline;
-    margin: 40px;
+    margin: 25px;
 }
 
 .map-component {
