@@ -2,7 +2,7 @@ import React from 'react';
 import {Nav, Container, NavDropdown, Navbar} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function NavigationBar() {
+function NavigationBar(busi_link, employ_link, spend_link) {
   return (
     <Navbar bg="light" expand="lg">
     <Container>
@@ -14,9 +14,9 @@ function NavigationBar() {
             <NavDropdown.Item href="/brighton">Brighton</NavDropdown.Item>
             <NavDropdown.Item href="/chinatown">Chinatown</NavDropdown.Item>
         </NavDropdown>
-        <Nav.Link href="brighton">Business</Nav.Link>
-        <Nav.Link href="brighton/employment">Employment</Nav.Link>
-        <Nav.Link href="brighton/spending">Mobility and Spending</Nav.Link>
+        <Nav.Link href={busi_link}>Business</Nav.Link>
+        <Nav.Link href={employ_link}>Employment</Nav.Link>
+        <Nav.Link href={spend_link}>Mobility and Spending</Nav.Link>
         </Nav>
     </Navbar.Collapse>
     </Container>

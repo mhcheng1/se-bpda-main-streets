@@ -11,6 +11,12 @@ return (
         <div className="block1">
             <div className="map-component"><Map /></div>
         </div>
+        <div className="title"><h1> Homepage </h1> </div>
+            <div className="generalinfo"> 
+                <p>Total number of businesses for all main streets: XXX </p> 
+                <p>Estimated number of employees for all main streets: XXX </p>
+                <p>Average employment size for all main street businesses: XXX </p>
+            </div>
     </div>
 );
 }

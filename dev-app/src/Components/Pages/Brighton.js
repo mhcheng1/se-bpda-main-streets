@@ -4,9 +4,8 @@ import NavigationBar from '../MSNavbar';
 import './Layout.css'
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip} from "recharts";
 import {Container} from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-
+const msname = "Brighton";
 
 function BusinessData() { 
     const [business_data, setData] = React.useState([]);
@@ -26,16 +25,29 @@ function BusinessData() {
 }
 
 function Brighton() {
+    const DistrictBar = () => {
+       return NavigationBar("/brighton", "/brighton/employment", "/brighton/spending");
+    }
     const business = BusinessData();
     return (
         <div>
-            <Container><NavigationBar /></Container>
+            <Container><DistrictBar /></Container>
             <div className="map"> {business[0]} </div>
+            <div className="street"> <h2>{msname} Main Street </h2> </div>
+            <div className="generalinfo"> 
+                <p>Total number of businesses: XXX </p> 
+                <p>Estimated number of employees: XXX </p>
+                <p>Average employment size: XXX </p>
+            </div>
+            <div className="graph1title"><h5>Industrial Distribution of Businesses in {msname}</h5></div>
             <div className="graph1">
                 <BarChart
-                    width={400}
-                    height={300}
+                    width={600}
+                    height={200}
                     data={business[1]}
+                    barGap={2}
+                    layout="vertical"
+                    barCategoryGap="20%"
                     margin={{
                         top: 5,
                         right: 30,
@@ -43,11 +55,11 @@ function Brighton() {
                         bottom: 5
                     }}
                     >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="industry" />
-                    <YAxis />
+                    <CartesianGrid strokeDasharray="3 3"/>
+                    <XAxis type="number"/>
+                    <YAxis type="category" tick={{fontSize: 7}} width={300} dataKey="industry"/>
                     <Tooltip />
-                    <Bar dataKey="business_num" fill="#8884d8" />
+                    <Bar dataKey="business_num" fill="blue" />
                 </BarChart>
             </div>
         </div>

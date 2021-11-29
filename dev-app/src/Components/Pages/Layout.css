@@ -1,11 +1,29 @@
 .map {
   display: flexbox;
   align-items:baseline;
-  margin: 30px;
+  margin: 20px;
+}
+
+.street {
+  position: absolute;
+  left: 800px;
+  top: 30px;
+}
+
+.generalinfo {
+  position: absolute;
+  left: 700px;
+  top: 110px;
+}
+
+.graph1title {
+  position: absolute;
+  left: 700px;
+  top: 240px;
 }
 
 .graph1 {
     position: absolute;
-    left: 700px;
-    top: 100px;
+    left: 500px;
+    top: 270px;
   }
