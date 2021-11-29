@@ -10,8 +10,8 @@ This program will take a CSV file of all the Boston Main Streets busineess and a
 #TODO: implement the table for Users and its relationship
 
 TABLES = {
-    "business": """CREATE TABLE business (object_id integer, name VARCHAR(100), employment integer, naics_6 integer, naics_6_title VARCHAR(100), naics_2 integer, naics_2_title VARCHAR(100), PRIMARY KEY(object_id))""",
-    "mainstreet": """CREATE TABLE mainstreet (id integer, name VARCHAR(50), PRIMARY KEY(id))""",
+    "business": """CREATE TABLE business (object_id integer, name VARCHAR(150), employment integer, naics_6 integer, naics_6_title VARCHAR(150), naics_2 integer, naics_2_title VARCHAR(150), PRIMARY KEY(object_id))""",
+    "mainstreet": """CREATE TABLE mainstreet (id integer, name VARCHAR(100), PRIMARY KEY(id))""",
     "location": """CREATE TABLE location (b_id integer, longitude VARCHAR(20), lattitude VARCHAR(20), street VARCHAR(100), postal integer, PRIMARY KEY(b_id,street), FOREIGN KEY (b_id) REFERENCES business(object_id) ON DELETE CASCADE)""",
     "online_profile": """CREATE TABLE online_profile (id integer, name VARCHAR(20), PRIMARY KEY(id))""",
     "busi_online": """CREATE TABLE busi_online (b_id integer, op_id integer, PRIMARY KEY(b_id, op_id), FOREIGN KEY(b_id) REFERENCES business(object_id), FOREIGN KEY(op_id) REFERENCES online_profile(id))""",

@@ -7,7 +7,6 @@ from models import Business, Location, Mainstreet, BusiMain, OnlineProfile, Busi
 from . import mainstreet
 from app import db
 
-
 def create_geoJSON(ms):
     try:
         items = db.session.query(Business.object_id, Business.name, Location.longitude, Location.lattitude).filter(Business.object_id == Location.b_id).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).all()
@@ -28,9 +27,31 @@ def industry_count(ms):
         for tuple in items:
             temp = {}
             temp["industry"] = tuple[0]
-            temp["business_num"] = tuple[1]
+            temp["number_of_businesses"] = tuple[1]
             lst.append(temp)
-        graph["title"] = "Number of Businesses by Industry"
+        graph["data"] = lst
+        return graph
+    except Exception as e:
+        return (str(e))
+
+def busi_info(ms):
+    try:
+        busi = db.session.query((func.count(Business.object_id)).label('busi_num'), (func.sum(Business.employment)).label('employ_num')).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).all()
+        avg_employ = db.session.query((func.avg(Business.employment)).label('avg_employ')).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).filter(Business.employment != 0).all()
+        return [busi[0][0], busi[0][1], round(avg_employ[0][0])]
+    except Exception as e:
+        return (str(e))
+
+def employment_count(ms):
+    try:
+        items = db.session.query(Business.naics_2_title, (func.sum(Business.employment)).label('Number')).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).group_by(Business.naics_2_title).all()
+        graph = dict()
+        lst = []
+        for tuple in items:
+            temp = {}
+            temp["industry"] = tuple[0]
+            temp["number_of_employees"] = tuple[1]
+            lst.append(temp)
         graph["data"] = lst
         return graph
     except Exception as e:
@@ -40,11 +61,47 @@ def collect_json(ms):
     data = dict()
     data["geo"] = create_geoJSON(ms)
     data["industry_graph"] = industry_count(ms)
+    data["employment_graph"] = employment_count(ms)
+    data["busi_info"] = busi_info(ms)
     return data
+
+def homepage_data():
+    try:
+        data = dict()
+
+        item1 = db.session.query(Business.naics_2_title, (func.count(Business.naics_2_title)).label('Number')).group_by(Business.naics_2_title).all()
+        industry_graph = dict()
+        lst = []
+        for tuple in item1:
+            temp = {}
+            temp["industry"] = tuple[0]
+            temp["number_of_businesses"] = tuple[1]
+            lst.append(temp)
+        industry_graph["data"] = lst
+
+        item2 = db.session.query(Business.naics_2_title, (func.sum(Business.employment)).label('Number')).group_by(Business.naics_2_title).all()
+        employee_graph = dict()
+        lst = []
+        for tuple in item2:
+            temp = {}
+            temp["industry"] = tuple[0]
+            temp["number_of_employees"] = tuple[1]
+            lst.append(temp)
+        employee_graph["data"] = lst
+
+        busi = db.session.query((func.count(Business.object_id)).label('busi_num'), (func.sum(Business.employment)).label('employ_num')).all()
+        avg_employ = db.session.query((func.avg(Business.employment)).label('avg_employ')).filter(Business.employment != 0).all()
+        
+        data["industry_graph"] = industry_graph
+        data["employment_graph"] = employee_graph
+        data["busi_info"] = [busi[0][0], busi[0][1], round(avg_employ[0][0])]
+        return data
+    except Exception as e:
+        return (str(e))
 
 @mainstreet.route("/")
 def root_site():
-    return {"test": "Home Page"}
+    return homepage_data()
 
 @mainstreet.route("/brighton")
 def brighton():
