@@ -18,12 +18,24 @@
 
 .graph1title {
   position: absolute;
-  left: 700px;
-  top: 240px;
+  left: 760px;
+  top: 220px;
 }
 
 .graph1 {
     position: absolute;
     left: 500px;
-    top: 270px;
+    top: 250px;
+  }
+
+.graph2title {
+  position: absolute;
+  left: 720px;
+  top: 450px;
+}
+
+.graph2 {
+    position: absolute;
+    left: 500px;
+    top: 480px;
   }
