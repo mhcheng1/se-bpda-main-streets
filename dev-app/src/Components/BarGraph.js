@@ -19,7 +19,7 @@ function BarGraph(data, x_axis, y_axis) {
         >
         <CartesianGrid strokeDasharray="3 3"/>
         <XAxis type="number"/>
-        <YAxis type="category" tick={{fontSize: 7}} width={300} dataKey={y_axis}/>
+        <YAxis type="category" tick={{fontSize: 7}} width={300} dataKey={y_axis} interval={1}/>
         <Tooltip />
         <Bar dataKey={x_axis} fill="blue" />
     </BarChart>

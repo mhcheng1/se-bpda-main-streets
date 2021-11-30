@@ -1,10 +1,11 @@
 .block1 {
-    display: flexbox;
-    align-items:baseline;
+    display: flex;
+    /* align-items:baseline; */
     margin: 25px;
 }
 
 .map-component {
+    flex: 1;
     position: right;
     right: 200px;
 }
@@ -15,9 +16,17 @@
     top: 30px;
   }
   
-  .generalinfo {
+  /* .generalinfo {
     position: absolute;
     left: 700px;
     top: 110px;
+  } */
+
+  .generalinfo {
+    margin-left: 5%;
+  }
+
+  .generalinfo p {
+    line-height: 35px;
   }
 

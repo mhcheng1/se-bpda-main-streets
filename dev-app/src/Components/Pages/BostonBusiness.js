@@ -41,9 +41,9 @@ function BostonBusiness() {
             <div className="map"><Map/></div>
             <div className="street"> <h2>All Main Streets </h2> </div>
             <div className="generalinfo"> 
-                <p>Total number of businesses: {business[2][0]} </p> 
-                <p>Estimated number of employees: {business[2][1]} </p>
-                <p>Average employment size: {business[2][2]} </p>
+                <p>Total number of businesses: <b> {business[2][0]} </b> </p> 
+                <p>Estimated number of employees: <b> {business[2][1]} </b></p>
+                <p>Average employment size: <b> {business[2][2]} </b></p>
             </div>
             <div className="graph1title"><h6>Industrial Distribution of Businesses in all Main Streets</h6></div>
             <div className="graph1"><BarGraph1/></div>
