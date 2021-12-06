@@ -57,14 +57,6 @@ def employment_count(ms):
     except Exception as e:
         return (str(e))
 
-def collect_json(ms):
-    data = dict()
-    data["geo"] = create_geoJSON(ms)
-    data["industry_graph"] = industry_count(ms)
-    data["employment_graph"] = employment_count(ms)
-    data["busi_info"] = busi_info(ms)
-    return data
-
 def homepage_data():
     try:
         data = dict()
@@ -99,6 +91,41 @@ def homepage_data():
     except Exception as e:
         return (str(e))
 
+#ADD FUNCTION HERE
+
+def collect_json(ms):
+    data = dict()
+    data["geo"] = create_geoJSON(ms)
+    data["industry_graph"] = industry_count(ms)
+    data["employment_graph"] = employment_count(ms)
+    data["busi_info"] = busi_info(ms)
+    return data
+
+###These are pretty much hard coded for the data given. 
+# The structure is accurate and should stand but the fucntions called or dictionaries created are hard coded
+# This data is not in the database and is simplified for just this main street.
+# Other than create_geoJSON, these functions are temporary and will need to be 
+# updated when more data is recieved.
+def collect_json_employmnet(ms):
+    data = dict()
+    data["geo"] = create_geoJSON(ms)
+    #This is just washington gateway data 
+    data["monthly_income"] = [{"Income": "$1,250 per month or less", "Count": 396},{"Income": "$1,251 to $3,333 per month", "Count": 528},{"Income": "More than $3,333 per month", "Count": 1180}]
+    data["gender"] = [{"Gender":"Female", "Count": 1200},{"Gender":"Male", "Count": 904}]
+    data["racial_distribution"] = [{"Race": "White Alone", "Count":1527},{"Race": "Black or African American Alone", "Count":301},{"Race": "American Indian or Alaska Native Alone", "Count":7},{"Race": "Asian Alone", "Count":236},{"Race": "Native Hawaiian or Other Pacific Islander Alone", "Count":5},{"Race": "Two or More Race Groups", "Count":28}]
+    data["age_distribution"] = [{"Age": "Age 29 or younger", "Count": 494}, {"Age": "Age 30 to 54", "Count": 1123}, {"Age": "Age 55 or older", "Count": 487}]
+    data["education_distribution"] = [{"Education": "Less than high school", "Count":193}, {"Education": "High school or equivalent, no college", "Count":314}, {"Education": "Some college or Associate degree", "Count":442}, {"Education": "Bachelor's degree or advanced degree", "Count":661}, {"Education": "Educational attainment unavailable", "Count":494}] 
+    return data
+
+def collect_json_spending(ms):
+    data = dict()
+    data["geo"] = create_geoJSON(ms)
+    #CALL FUNCTION HERE #this function only returns washington gateway data; should be updated when data is eventually added to database
+    data["trips"] = []
+    data["in_person_spending"] = []
+    return data
+###
+
 @mainstreet.route("/")
 def root_site():
     return homepage_data()
@@ -107,9 +134,21 @@ def root_site():
 def brighton():
     return collect_json("Brighton")
 
+###The reason this is only main street that has all three pages is because
+# this is the only mainstreet that we had all data for
+# In the future all main streets should have this.
 @mainstreet.route("/washingtongateway")
 def washington_gate():
     return collect_json("Washington St Gateway")
+
+@mainstreet.route("/washingtongateway/employment")
+def washington_gate_employment():
+    return collect_json_employmnet("Washington St Gateway")
+
+@mainstreet.route("/washingtongateway/spending")
+def washington_gate_spending():
+    return collect_json_spending("Washington St Gateway")
+###
 
 @mainstreet.route("/fourcorners")
 def four_corners():
