@@ -30,11 +30,11 @@ function Business(url, msname, coordinates, zoom, link1, link2, link3) {
         return NavigationBar(link1, link2, link3);
      }
     const business = BusinessData(url, coordinates, zoom);
-    const BarGraph1 = () => {
-        return BarGraph(business[1], "number_of_businesses", "industry");
+    const BusinessGraph = () => {
+        return BarGraph(business[1], 1, 7, "number_of_businesses", "industry");
      }
-     const BarGraph2 = () => {
-        return BarGraph(business[2], "number_of_employees", "industry");
+     const SizeGraph = () => {
+        return BarGraph(business[2], 1, 7, "number_of_employees", "industry");
      }
 
     return (
@@ -48,9 +48,9 @@ function Business(url, msname, coordinates, zoom, link1, link2, link3) {
                 <p>Average employment size: {business[3][2]} </p>
             </div>
             <div className="graph1title"><h6>Industrial Distribution of Businesses in {msname}</h6></div>
-            <div className="graph1"><BarGraph1/></div>
+            <div className="graph1"><BusinessGraph/></div>
             <div className="graph2title"><h6>Number of Businesses in {msname} Main Street Districts by Size</h6></div>
-            <div className="graph2"><BarGraph2/></div>
+            <div className="graph2"><SizeGraph/></div>
         </div>
     );
 }

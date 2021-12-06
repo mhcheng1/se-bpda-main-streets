@@ -1,0 +1,47 @@
+.map {
+display: flexbox;
+/* align-items:baseline; */
+margin: 20px;
+}
+
+.street {
+position: absolute;
+left: 800px;
+top: 30px;
+}
+
+.graph1title {
+/* position: absolute; */
+left: 760px;
+top: 220px;
+}
+
+.graph1 {
+    /* position: absolute; */
+    left: 500px;
+    top: 250px;
+}
+
+.graph2title {
+/* position: absolute; */
+left: 720px;
+top: 450px;
+}
+
+.graph2 {
+    /* position: absolute; */
+    left: 500px;
+    top: 480px;
+}
+
+.graph3title {
+    /* position: absolute; */
+    left: 720px;
+    top: 450px;
+  }
+  
+.graph3 {
+    /* position: absolute; */
+    left: 500px;
+    top: 480px;
+}

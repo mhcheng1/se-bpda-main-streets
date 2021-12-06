@@ -29,10 +29,10 @@ function BostonBusiness() {
      }
     const business = BusinessData();
     const BarGraph1 = () => {
-        return BarGraph(business[0], "number_of_businesses", "industry");
+        return BarGraph(business[0], 1, 7, "number_of_businesses", "industry");
      }
      const BarGraph2 = () => {
-        return BarGraph(business[1], "number_of_employees", "industry");
+        return BarGraph(business[1], 1, 7, "number_of_employees", "industry");
      }
 
     return (

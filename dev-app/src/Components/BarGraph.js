@@ -1,7 +1,7 @@
 import React from 'react';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip} from "recharts";
 
-function BarGraph(data, x_axis, y_axis) {
+function BarGraph(data, intv, font, x_axis, y_axis) {
   return (
     <BarChart
         width={600}
@@ -19,7 +19,7 @@ function BarGraph(data, x_axis, y_axis) {
         >
         <CartesianGrid strokeDasharray="3 3"/>
         <XAxis type="number"/>
-        <YAxis type="category" tick={{fontSize: 7}} width={300} dataKey={y_axis} interval={1}/>
+        <YAxis type="category" tick={{fontSize: font}} width={300} dataKey={y_axis} interval={intv}/>
         <Tooltip />
         <Bar dataKey={x_axis} fill="blue" />
     </BarChart>

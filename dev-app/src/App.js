@@ -4,6 +4,7 @@ import Developing from "./Components/Pages/Developing";
 import Homepage from "./Components/Pages/Hompage";
 import Business from "./Components/Pages/Business";
 import BostonBusiness from "./Components/Pages/BostonBusiness";
+import Employment from "./Components/Pages/Employment";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   const BrightonS = () => {
     return Developing("/se-bpda-main-streets/brighton", "/se-bpda-main-streets/brighton/employment", "/se-bpda-main-streets/brighton/spending");
   }
+
   const ChinatownB = () => {
     return Business('http://35.168.164.33:5000/chinatown', 'Chinatown', [42.3515, -71.061], 17, "/se-bpda-main-streets/chinatown", "/se-bpda-main-streets/chinatown/employment", "/se-bpda-main-streets/chinatown/spending");
   } 
@@ -33,6 +35,17 @@ function App() {
   const ChinatownS = () => {
     return Developing("/se-bpda-main-streets/chinatown", "/se-bpda-main-streets/chinatown/employment", "/se-bpda-main-streets/chinatown/spending");
   }
+
+  const WashingtonGateWayB = () => {
+    return Business('http://35.168.164.33:5000/washingtongateway', 'Washington Gateway', [42.34, -71.07], 15, "/se-bpda-main-streets/washingtongateway", "/se-bpda-main-streets/washingtongateway/employment", "/se-bpda-main-streets/washingtongateway/spending");
+  } 
+  const WashingtonGateWaynE = () => {
+    return Employment('http://35.168.164.33:5000/washingtongateway/employment', 'Washington Gateway', [42.34, -71.07], 15, "/se-bpda-main-streets/washingtongateway", "/se-bpda-main-streets/washingtongateway/employment", "/se-bpda-main-streets/washingtongateway/spending");
+  }
+  const WashingtonGateWayS = () => {
+    return Developing("/se-bpda-main-streets/washingtongateway", "/se-bpda-main-streets/washingtongateway/employment", "/se-bpda-main-streets/washingtongateway/spending");
+  }
+
   return (
     <div>
       <Router>
@@ -48,6 +61,9 @@ function App() {
             <Route path='/se-bpda-main-streets/chinatown' element={<ChinatownB/>} />
             <Route path='/se-bpda-main-streets/chinatown/employment' element={<ChinatownE/>} />
             <Route path='/se-bpda-main-streets/chinatown/spending' element={<ChinatownS/>} />
+            <Route path='/se-bpda-main-streets/washingtongateway' element={<WashingtonGateWayB/>} />
+            <Route path='/se-bpda-main-streets/washingtongateway/employment' element={<WashingtonGateWaynE/>} />
+            <Route path='/se-bpda-main-streets/washingtongateway/spending' element={<WashingtonGateWayS/>} />
         </Routes>
       </Router>
     </div>
