@@ -1,3 +1,4 @@
+import pandas as pd
 from geojson import Feature, Point, FeatureCollection
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text, func 
@@ -6,6 +7,7 @@ from sqlalchemy.sql.roles import BinaryElementRole
 from models import Business, Location, Mainstreet, BusiMain, OnlineProfile, BusiOnline
 from . import mainstreet
 from app import db
+
 
 def create_geoJSON(ms):
     try:
@@ -91,7 +93,23 @@ def homepage_data():
     except Exception as e:
         return (str(e))
 
-#ADD FUNCTION HERE
+def get_spending_data():
+    file = "../../data/trips_washington_gateway.csv"
+    df = pd.read_csv(file, header=0)
+    df = df.to_numpy().tolist()
+    lst1 = []
+    lst2 = []
+    for tuple in df:
+        temp1 = {}
+        temp2 = {}
+        if isinstance(tuple[0], str):
+            temp1["date"] = tuple[0]
+            temp1["share"] = tuple[1].replace("%", "")
+            temp2["date"] = tuple[0]
+            temp2["trips"] = tuple[2]
+            lst2.append(temp2)
+            lst1.append(temp1)
+    return (lst1, lst2)
 
 def collect_json(ms):
     data = dict()
@@ -120,9 +138,9 @@ def collect_json_employmnet(ms):
 def collect_json_spending(ms):
     data = dict()
     data["geo"] = create_geoJSON(ms)
-    #CALL FUNCTION HERE #this function only returns washington gateway data; should be updated when data is eventually added to database
-    data["trips"] = []
-    data["in_person_spending"] = []
+    (spending, mobility) = get_spending_data()
+    data["trips"] = mobility
+    data["in_person_spending"] = spending
     return data
 ###
 
