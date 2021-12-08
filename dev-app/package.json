@@ -1,5 +1,5 @@
 {
-  "homepage": "https://BU-Spark.github.io/se-bpda-main-streets",
+  "homepage": "http://BU-Spark.github.io/se-bpda-main-streets",
   "name": "dev-app",
   "version": "0.1.0",
   "private": true,
@@ -13,6 +13,7 @@
     "react-bootstrap": "^2.0.2",
     "react-dom": "^17.0.2",
     "react-leaflet": "^3.2.2",
+    "react-meta-tags": "^1.0.1",
     "react-router-dom": "^6.0.2",
     "react-scripts": "^4.0.3",
     "recharts": "^2.1.6",

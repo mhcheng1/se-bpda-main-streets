@@ -2,3 +2,7 @@
 # yarn lockfile v1
 
 
+"ufw@^1.0.3":
+  "integrity" "sha512-FkKOyv+XvEkk5fHp3/Z9hBEqUCBR1is2x8Frgl6U/YMYkzhi5xalllUXhwAwudqeOT7WFS0/0AhaBCIPtyw3wg=="
+  "resolved" "https://registry.npmjs.org/ufw/-/ufw-1.0.3.tgz"
+  "version" "1.0.3"

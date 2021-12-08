@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import React from 'react';
 import Developing from "./Components/Pages/Developing";
 import Homepage from "./Components/Pages/Hompage";
@@ -8,9 +8,19 @@ import Employment from "./Components/Pages/Employment";
 
 
 function App() {
-  //This is temporary (only Boston)
-  const BostonE = () => {
-    return Developing("/se-bpda-main-streets/business", "/se-bpda-main-streets/employment", "/se-bpda-main-streets/spending");
+    return (
+      <div>
+        <HashRouter>
+          <div className="App">
+            <br />
+            <Routes>
+              <Route path='/' element={<Homepage />} />
+              <Route path='/business' element={<BostonBusiness />} />
+            </Routes>
+          </div>
+        </HashRouter>
+      </div>
+    );
   }
   const BostonS = () => {
     return Developing("/se-bpda-main-streets/business", "/se-bpda-main-streets/employment", "/se-bpda-main-streets/spending");
@@ -45,29 +55,5 @@ function App() {
   const WashingtonGateWayS = () => {
     return Developing("/se-bpda-main-streets/washingtongateway", "/se-bpda-main-streets/washingtongateway/employment", "/se-bpda-main-streets/washingtongateway/spending");
   }
-
-  return (
-    <div>
-      <Router>
-        <br />
-        <Routes>
-            <Route path='/se-bpda-main-streets/' element={<Homepage/>} />
-            <Route path='/se-bpda-main-streets/business' element={<BostonBusiness/>} />
-            <Route path='/se-bpda-main-streets/employment' element={<BostonE/>} />
-            <Route path='/se-bpda-main-streets/spending' element={<BostonS/>} />
-            <Route path='/se-bpda-main-streets/brighton' element={<BrightonB/>} />
-            <Route path='/se-bpda-main-streets/brighton/employment' element={<BrightonE/>} />
-            <Route path='/se-bpda-main-streets/brighton/spending' element={<BrightonS/>} />
-            <Route path='/se-bpda-main-streets/chinatown' element={<ChinatownB/>} />
-            <Route path='/se-bpda-main-streets/chinatown/employment' element={<ChinatownE/>} />
-            <Route path='/se-bpda-main-streets/chinatown/spending' element={<ChinatownS/>} />
-            <Route path='/se-bpda-main-streets/washingtongateway' element={<WashingtonGateWayB/>} />
-            <Route path='/se-bpda-main-streets/washingtongateway/employment' element={<WashingtonGateWaynE/>} />
-            <Route path='/se-bpda-main-streets/washingtongateway/spending' element={<WashingtonGateWayS/>} />
-        </Routes>
-      </Router>
-    </div>
-  );
-}
 
 export default App;

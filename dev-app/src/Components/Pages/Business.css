@@ -1,41 +1,53 @@
 .map {
   display: flexbox;
   /* align-items:baseline; */
-  margin: 20px;
+  margin: 25px;
+  float: left;
 }
-
 .street {
-  position: absolute;
-  left: 800px;
+  /* position: absolute;
+  left: 800px; */
   top: 30px;
+  float: left;
+  width: 40%;
 }
 
 .generalinfo {
   /* position: absolute; */
-  left: 700px;
-  top: 110px;
+  /* left: 700px;
+  top: 110px; */
+  float: left;
+  width: 40%;
+  margin-left: -10px;
 }
 
 .graph1title {
   /* position: absolute; */
-  left: 760px;
-  top: 220px;
+  /* left: 760px;
+  top: 220px; */
+  float: left;
+  width: 30%;
 }
 
 .graph1 {
     /* position: absolute; */
-    left: 500px;
-    top: 250px;
+    /* left: 500px;
+    top: 250px; */
+    margin-left: -210px;
+    float: left;
   }
 
 .graph2title {
   /* position: absolute; */
-  left: 720px;
-  top: 450px;
+  /* left: 720px;
+  top: 450px; */
+  float: left;
 }
 
 .graph2 {
     /* position: absolute; */
-    left: 500px;
-    top: 480px;
+    /* left: 500px;
+    top: 480px; */
+    float: left;
+    margin-left: -210px;
   }
