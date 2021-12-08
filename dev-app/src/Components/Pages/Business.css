@@ -1,7 +1,5 @@
-.map {
-  display: flexbox;
-  /* align-items:baseline; */
-  margin: 20px;
+.box {
+  display: flex;
 }
 
 .street {
@@ -10,32 +8,10 @@
   top: 30px;
 }
 
-.generalinfo {
-  /* position: absolute; */
-  left: 700px;
-  top: 110px;
-}
-
-.graph1title {
-  /* position: absolute; */
-  left: 760px;
-  top: 220px;
-}
-
 .graph1 {
-    /* position: absolute; */
-    left: 500px;
-    top: 250px;
-  }
-
-.graph2title {
-  /* position: absolute; */
-  left: 720px;
-  top: 450px;
+  margin-left: -100px;
 }
 
 .graph2 {
-    /* position: absolute; */
-    left: 500px;
-    top: 480px;
-  }
+  margin-left: -100px;
+}

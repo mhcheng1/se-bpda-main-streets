@@ -3,6 +3,7 @@ import {Container} from 'react-bootstrap';
 import NavigationBar from '../NavigationBar';
 import BarGraph from '../BarGraph';
 import MainstreetMap from '../MainstreetMap';
+import './Employment.css';
 
 function EmploymentData(url, coordinates, zoom) { 
     const [business_data, setData] = React.useState([]);
@@ -52,14 +53,24 @@ function Employment(url, msname, coordinates, zoom, link1, link2, link3) {
     return (
         <div>
             <Container><DistrictBar /></Container>
-            <div className="map"> {business[0]} </div>
             <div className="street"> <h2>{msname} Main Street </h2> </div>
-            <div className="graph1title"><h6> Monthly Income for {msname} Employees</h6></div>
-            <div className="graph1"><IncomeGraph/></div>
-            <div className="graph2title"><h6> Gender Distribution in {msname}</h6></div>
-            <div className="graph2"><GenderGraph/></div>
-            <div className="graph3title"><h6> Race Distribution in {msname}</h6></div>
-            <div className="graph3"><RaceGraph/></div>
+            <div className="box">
+                <div className="map"> {business[0]} </div>
+                <div className="graphs">
+                    <div className="graph1title">
+                        <h6> Monthly Income for {msname} Employees</h6>
+                        <div className="graph1"><IncomeGraph/></div>
+                    </div>
+                    <div className="graph2title">
+                        <h6> Gender Distribution in {msname}</h6>
+                        <div className="graph2"><GenderGraph/></div>
+                    </div>
+                    <div className="graph3title">
+                        <h6> Race Distribution in {msname}</h6>
+                        <div className="graph3"><RaceGraph/></div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

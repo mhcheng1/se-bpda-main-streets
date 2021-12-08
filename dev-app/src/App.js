@@ -5,6 +5,7 @@ import Homepage from "./Components/Pages/Hompage";
 import Business from "./Components/Pages/Business";
 import BostonBusiness from "./Components/Pages/BostonBusiness";
 import Employment from "./Components/Pages/Employment";
+import Spending from "./Components/Pages/Spending"
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
     return Developing("/se-bpda-main-streets/chinatown", "/se-bpda-main-streets/chinatown/employment", "/se-bpda-main-streets/chinatown/spending");
   }
   const ChinatownS = () => {
-    return Developing("/se-bpda-main-streets/chinatown", "/se-bpda-main-streets/chinatown/employment", "/se-bpda-main-streets/chinatown/spending");
+    return Spending("/se-bpda-main-streets/chinatown", "/se-bpda-main-streets/chinatown/employment", "/se-bpda-main-streets/chinatown/spending");
   }
 
   const WashingtonGateWayB = () => {
@@ -43,7 +44,7 @@ function App() {
     return Employment('http://35.168.164.33:5000/washingtongateway/employment', 'Washington Gateway', [42.34, -71.07], 15, "/se-bpda-main-streets/washingtongateway", "/se-bpda-main-streets/washingtongateway/employment", "/se-bpda-main-streets/washingtongateway/spending");
   }
   const WashingtonGateWayS = () => {
-    return Developing("/se-bpda-main-streets/washingtongateway", "/se-bpda-main-streets/washingtongateway/employment", "/se-bpda-main-streets/washingtongateway/spending");
+    return Spending('http://35.168.164.33:5000/washingtongateway/spending', 'Washington Gateway', [42.34, -71.07], 15, "/se-bpda-main-streets/washingtongateway", "/se-bpda-main-streets/washingtongateway/employment", "/se-bpda-main-streets/washingtongateway/spending");
   }
 
   return (
