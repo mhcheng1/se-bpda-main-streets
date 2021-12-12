@@ -1,9 +1,9 @@
 import React from 'react';
 import 'leaflet/dist/leaflet.css';
 import {MapContainer, TileLayer, GeoJSON, FeatureGroup, Popup, Polygon} from 'react-leaflet';
-import streets from './Main_Street_Districts.json';
-import boston from './Boston_Boundary.json'
-import './Map.css'
+import streets from './GeoJSON/Main_Street_Districts.json';
+import boston from './GeoJSON/Boston_Boundary.json';
+import './Map.css';
 
 function Map() {
 

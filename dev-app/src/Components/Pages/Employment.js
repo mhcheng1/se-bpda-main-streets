@@ -53,21 +53,25 @@ function Employment(url, msname, coordinates, zoom, link1, link2, link3) {
     return (
         <div>
             <Container><DistrictBar /></Container>
-            <div className="street"> <h2>{msname} Main Street </h2> </div>
-            <div className="box">
-                <div className="map"> {business[0]} </div>
-                <div className="graphs">
-                    <div className="graph1title">
+            <div>
+                <div className="employment-title">
+                    <h2>{msname} Employment Data</h2>
+                </div>
+            </div>
+            <div className="employment-box">
+                <div className="employment-map"> {business[0]} </div>
+                <div className="employment-graphs">
+                    <div className="employment-graph1-title">
                         <h6> Monthly Income for {msname} Employees</h6>
-                        <div className="graph1"><IncomeGraph/></div>
+                        <div className="employmnent-graph1"><IncomeGraph/></div>
                     </div>
-                    <div className="graph2title">
+                    <div className="employment-graph2-title">
                         <h6> Gender Distribution in {msname}</h6>
-                        <div className="graph2"><GenderGraph/></div>
+                        <div className="employment-graph2"><GenderGraph/></div>
                     </div>
-                    <div className="graph3title">
+                    <div className="employment-graph3-title">
                         <h6> Race Distribution in {msname}</h6>
-                        <div className="graph3"><RaceGraph/></div>
+                        <div className="employment-graph3"><RaceGraph/></div>
                     </div>
                 </div>
             </div>

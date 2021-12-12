@@ -5,41 +5,46 @@ import Homepage from "./Components/Pages/Hompage";
 import Business from "./Components/Pages/Business";
 import BostonBusiness from "./Components/Pages/BostonBusiness";
 import Employment from "./Components/Pages/Employment";
+import Spending from "./Components/Pages/Spending";
 
 
 function App() {
 
-  const BostonS = () => {
-    return Developing("/se-bpda-main-streets/business", "/se-bpda-main-streets/employment", "/se-bpda-main-streets/spending");
+  const BostonEmployment = () => {
+    return Developing("#/business", "#/employment", "#/spending");
   }
+  const BostonSpending = () => {
+    return Developing("#/business", "#/employment", "#/spending");
+  }
+
   const BrightonB = () => {
-    return Business('http://35.168.164.33:5000/brighton', 'Brighton', [42.35, -71.16], 15, "#/brighton", "#/brighton/employment", "#/brighton/spending");
+    return Business('https://se-bpda.buspark.io/brighton', 'Brighton', [42.35, -71.16], 15, "#/brighton", "#/brighton/employment", "#/brighton/spending");
   }
   const BrightonE = () => {
     return Developing("#/brighton", "#/brighton/employment", "#/brighton/spending");
   }
   const BrightonS = () => {
-    return Developing("/se-bpda-main-streets/brighton", "/se-bpda-main-streets/brighton/employment", "/se-bpda-main-streets/brighton/spending");
+    return Developing("#/brighton", "#/brighton/employment", "#/brighton/spending");
   }
 
   const ChinatownB = () => {
-    return Business('http://35.168.164.33:5000/chinatown', 'Chinatown', [42.3515, -71.061], 17, "/se-bpda-main-streets/chinatown", "/se-bpda-main-streets/chinatown/employment", "/se-bpda-main-streets/chinatown/spending");
+    return Business('https://se-bpda.buspark.io/chinatown', 'Chinatown', [42.3515, -71.061], 17, "#/chinatown", "#/chinatown/employment", "#/chinatown/spending");
   }
   const ChinatownE = () => {
-    return Developing("/se-bpda-main-streets/chinatown", "/se-bpda-main-streets/chinatown/employment", "/se-bpda-main-streets/chinatown/spending");
+    return Developing("#/chinatown", "#/chinatown/employment", "#/chinatown/spending");
   }
   const ChinatownS = () => {
-    return Developing("/se-bpda-main-streets/chinatown", "/se-bpda-main-streets/chinatown/employment", "/se-bpda-main-streets/chinatown/spending");
+    return Developing("#/chinatown", "#/chinatown/employment", "#/chinatown/spending");
   }
 
-  const WashingtonGateWayB = () => {
-    return Business('http://35.168.164.33:5000/washingtongateway', 'Washington Gateway', [42.34, -71.07], 15, "/se-bpda-main-streets/washingtongateway", "/se-bpda-main-streets/washingtongateway/employment", "/se-bpda-main-streets/washingtongateway/spending");
+  const WashingtonGatewayB = () => {
+    return Business('https://se-bpda.buspark.io/washingtongateway', 'Washington Gateway', [42.34, -71.07], 15, "#/washingtongateway", "#/washingtongateway/employment", "#/washingtongateway/spending");
   }
-  const WashingtonGateWaynE = () => {
-    return Employment('http://35.168.164.33:5000/washingtongateway/employment', 'Washington Gateway', [42.34, -71.07], 15, "/se-bpda-main-streets/washingtongateway", "/se-bpda-main-streets/washingtongateway/employment", "/se-bpda-main-streets/washingtongateway/spending");
+  const WashingtonGatewayE = () => {
+    return Employment('https://se-bpda.buspark.io/washingtongateway/employment', 'Washington Gateway', [42.34, -71.07], 15, "#/washingtongateway", "#/washingtongateway/employment", "#/washingtongateway/spending");
   }
-  const WashingtonGateWayS = () => {
-    return Developing("/se-bpda-main-streets/washingtongateway", "/se-bpda-main-streets/washingtongateway/employment", "/se-bpda-main-streets/washingtongateway/spending");
+  const WashingtonGatewayS = () => {
+    return Spending('https://se-bpda.buspark.io/washingtongateway/spending', 'Washington Gateway', [42.34, -71.07], 15, "#/washingtongateway", "#/washingtongateway/employment", "#/washingtongateway/spending");
   }
 
     return (
@@ -48,10 +53,22 @@ function App() {
           <div className="App">
             <br />
             <Routes>
-              <Route path='/' element={<Homepage />} />
-              <Route path='/business' element={<BostonBusiness />} />
-              <Route path='/brighton' element={<BrightonB />} />
-              <Route path='/brighton/employment' element={<BrightonE />} />
+              <Route path='/' element={<Homepage/>} />
+              <Route path='/business' element={<BostonBusiness/>} />
+              <Route path='/employment' element={<BostonEmployment/>} />
+              <Route path='/spending' element={<BostonSpending/>} />
+
+              <Route path='/brighton' element={<BrightonB/>} />
+              <Route path='/brighton/employment' element={<BrightonE/>} />
+              <Route path='/brighton/spending' element={<BrightonS/>} />
+
+              <Route path='/chinatown' element={<ChinatownB/>} />
+              <Route path='/chinatown/employment' element={<ChinatownE/>} />
+              <Route path='/chinatown/spending' element={<ChinatownS/>} />
+
+              <Route path='/washingtongateway' element={<WashingtonGatewayB/>} />
+              <Route path='/washingtongateway/employment' element={<WashingtonGatewayE/>} />
+              <Route path='/washingtongateway/spending' element={<WashingtonGatewayS/>} />
             </Routes>
           </div>
         </HashRouter>

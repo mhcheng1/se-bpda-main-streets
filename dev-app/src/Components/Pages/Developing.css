@@ -1,12 +1,14 @@
 .Title {
     position: absolute;
-    left: 400px;
-    top: 150px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
 }
 
 .Loading {
     position: absolute;
-    left: 650px;
-    bottom: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

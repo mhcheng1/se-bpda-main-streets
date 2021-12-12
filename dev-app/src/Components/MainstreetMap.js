@@ -3,7 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import {Icon} from 'leaflet'
 import {MapContainer, TileLayer, GeoJSON, Marker, Popup} from 'react-leaflet';
-import msdistricts from './Main_Street_Districts.json';
+import msdistricts from './GeoJSON/Main_Street_Districts.json';
 import './Map.css'
 
 function MainstreetMap(district_data, map_coor, map_zoom) {
@@ -27,8 +27,8 @@ function MainstreetMap(district_data, map_coor, map_zoom) {
           <GeoJSON style={districtStyle} data={msdistricts} />
           {district_data.map((item) =>
               <Marker position={item.geometry.coordinates}
-                      icon={new Icon({iconUrl: markerIconPng, iconSize: [20, 35]})}>
-                  <Popup> This is the business: {item.properties.name} </Popup>
+                      icon={new Icon({iconUrl: markerIconPng, iconSize: [15, 30]})}>
+                  <Popup> This is the business: <b>{item.properties.name}</b></Popup>
               </Marker>
            )}
         </MapContainer>

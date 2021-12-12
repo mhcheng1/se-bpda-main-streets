@@ -1,32 +1,18 @@
-.block1 {
-    display: flex;
-    /* align-items:baseline; */
-    margin: 25px;
+.homepage-block {
+  display: flex;
+  margin: 25px;
 }
 
-.map-component {
-    flex: 1;
-    position: right;
-    right: 200px;
+.homepage-map {
+  flex: 1;
+  position: right;
+  right: 200px;
 }
 
-.title {
-    position: absolute;
-    left: 500px;
-    top: 30px;
-  }
-  
-  /* .generalinfo {
-    position: absolute;
-    left: 700px;
-    top: 110px;
-  } */
+.homepage-generalinfo {
+margin-left: 5%;
+}
 
-  .generalinfo {
-    margin-left: 5%;
-  }
-
-  .generalinfo p {
-    line-height: 35px;
-  }
-
+.homepage-generalinfo p {
+line-height: 35px;
+}

@@ -10,7 +10,7 @@ function BusinessData() {
     const [employee_graph, setGraph2] = React.useState([]);
     const [stats, setStats] = React.useState([]);
     React.useEffect(() => {
-        fetch('http://35.168.164.33:5000/')
+        fetch('https://se-bpda.buspark.io/')
             .then(response => response.json())
             .then(data => {
                 setStats(data.busi_info);
@@ -39,20 +39,24 @@ function BostonBusiness() {
     return (
         <div>
             <Container><DistrictBar /></Container>
-            <div className="street"> <h2>All Main Streets </h2> </div>
-            <div className="box">
-                <div className="map"><Map/></div>
-                <div className="generalinfo"> 
+            <div>
+                <div className="business-title">
+                    <h2>All Main Street Data</h2>
+                </div>
+            </div>
+            <div className="business-box">
+                <div className="business-map"><Map/></div>
+                <div className="business-generalinfo"> 
                     <p>Total number of businesses: <b> {business[2][0]} </b> </p> 
                     <p>Estimated number of employees: <b> {business[2][1]} </b></p>
                     <p>Average employment size: <b> {business[2][2]} </b></p>
-                    <div className="graph1title">
+                    <div className="business-graph1title">
                         <h6>Industrial Distribution of Businesses in all Main Streets</h6>
-                        <div className="graph1"><BarGraph1/></div>
+                        <div className="business-graph1"><BarGraph1/></div>
                     </div>
-                    <div className="graph2title">
+                    <div className="business-graph2title">
                         <h6>Number of Businesses in all Main Street Districts by Size</h6>
-                        <div className="graph2"><BarGraph2/></div>
+                        <div className="business-graph2"><BarGraph2/></div>
                     </div>
                 </div>
             </div>

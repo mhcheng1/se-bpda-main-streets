@@ -11,9 +11,9 @@ function Homepage() {
     return (
         <div>
             <Container><HomepageBar /></Container>
-            <div className="block1">
-                <div className="map-component"><Map /></div>
-                <div className="generalinfo">
+            <div className="homepage-block">
+                <div className="homepage-map"><Map /></div>
+                <div className="homepage-generalinfo">
                     <p>
                         <strong> Boston Main Street District Viewer </strong> is a project from the BPDA Research
                         Division and Boston University Spark. This interactive map combines public

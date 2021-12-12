@@ -1,15 +1,39 @@
-.box {
+.employment-box {
     display: flex;
 }
 
-.graph1title{
+.employment-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+.employment-map {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+
+.employment-graph1-title {
+    margin-top: 20px;
     text-align: center;
 }
 
-.graph2title {
+.employment-graph1 {
+    margin-left: -50px;
+}
+
+.employment-graph2-title {
+    margin-top: 20px;
     text-align: center;
 }
 
-.graph3title {
+.employment-graph2 {
+    margin-left: -150px;
+}
+
+
+.employment-graph3-title {
+    margin-top: 20px;
     text-align: center;
 }

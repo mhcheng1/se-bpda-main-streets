@@ -40,17 +40,21 @@ function Spending(url, msname, coordinates, zoom, link1, link2, link3) {
     return (
         <div>
             <Container><DistrictBar /></Container>
-            <div className="street"> <h2>{msname} Main Street </h2></div>
-            <div className="box">
-                <div className="map"> {business[0]} </div>
-                <div className="graphs">
-                    <div className="LineGraph1Title">
+            <div>
+                <div className="spending-title">
+                    <h2>{msname} Spending and Moblity Data</h2>
+                </div>
+            </div>
+            <div className="spending-box">
+                <div className="spending-map"> {business[0]} </div>
+                <div className="spending-graphs">
+                    <div className="spending-linegraph1-title">
                         <h4>Spending Distribution in {msname}</h4>
-                        <div className="LineGraph1"><SpendingGraph/></div>
+                        <div className="spending-linegraph1"><SpendingGraph/></div>
                     </div>
-                    <div className="LineGraph2Title">
+                    <div className="spending-linegraph2-title">
                         <h4>Trip Distribution in {msname}</h4>
-                        <div className="LineGraph2"><TripsGraph/></div>
+                        <div className="spending-linegraph2"><TripsGraph/></div>
                     </div>
                 </div>
             </div>
