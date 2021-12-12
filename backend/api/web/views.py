@@ -1,15 +1,16 @@
 import pandas as pd
 from geojson import Feature, Point, FeatureCollection
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import text, func 
-from flask import Flask, render_template
-from sqlalchemy.sql.roles import BinaryElementRole
-from models import Business, Location, Mainstreet, BusiMain, OnlineProfile, BusiOnline
+from sqlalchemy import func 
+from models import Business, Location, Mainstreet, BusiMain
 from . import mainstreet
 from app import db
 
-
 def create_geoJSON(ms):
+    """
+    Input: A string of the main street that will be querired from the database
+    Output: Python dictionary of the locational data (longitude, latitude) of 
+            the businesses for the specified main street in the form of a GeoJSON
+    """
     try:
         items = db.session.query(Business.object_id, Business.name, Location.longitude, Location.lattitude).filter(Business.object_id == Location.b_id).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).all()
         feature_lst = []
@@ -22,6 +23,11 @@ def create_geoJSON(ms):
         return (str(e))
 
 def industry_count(ms):
+    """
+    Input: A string of the main street that will be querired from the database
+    Output: Python dictionary containing the number of businesses per type of 
+            industry in the form of ReCharts, a React graph library, data
+    """
     try:
         items = db.session.query(Business.naics_2_title, (func.count(Business.naics_2_title)).label('Number')).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).group_by(Business.naics_2_title).all()
         graph = dict()
@@ -37,6 +43,13 @@ def industry_count(ms):
         return (str(e))
 
 def busi_info(ms):
+    """
+    Input: A string of the main street that will be querired from the database
+    Output: A list containing data of specified main street
+            Index 1 - number of businesses in the specified main street
+            Index 2 - number of employees in the specified main street
+            Index 3 - average number of employees per business in the specified main street
+    """
     try:
         busi = db.session.query((func.count(Business.object_id)).label('busi_num'), (func.sum(Business.employment)).label('employ_num')).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).all()
         avg_employ = db.session.query((func.avg(Business.employment)).label('avg_employ')).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).filter(Business.employment != 0).all()
@@ -45,6 +58,11 @@ def busi_info(ms):
         return (str(e))
 
 def employment_count(ms):
+    """
+    Input: A string of the main street that will be querired from the database
+    Output: Python dictionary containing the number of employees per type of 
+            industry in the form of ReCharts, a React graph library, data
+    """
     try:
         items = db.session.query(Business.naics_2_title, (func.sum(Business.employment)).label('Number')).join(BusiMain).join(Mainstreet).filter(Mainstreet.name == ms).group_by(Business.naics_2_title).all()
         graph = dict()
@@ -60,6 +78,12 @@ def employment_count(ms):
         return (str(e))
 
 def homepage_data():
+    """
+    Input: None
+    Output: Python dictionary of all data for all mainstreets of boston 
+            (number of business per industry, number of employees per industry, total number of businesses, 
+            total number of employees, average number of employees per businesses)
+    """
     try:
         data = dict()
 
@@ -94,7 +118,13 @@ def homepage_data():
         return (str(e))
 
 def get_spending_data():
-    file = "../../data/trips_washington_gateway.csv"
+    """
+    Input: None; Should be main street but there is only data for Washington Gateway
+    Output: Python dictionary containing two lists of data in the form of ReCharts, a React graph library, data
+            List1 - percentage of trips to desired mainstreet
+            List2 - percentage of spending in desired mainstreet
+    """
+    file = "../data/trips_washington_gateway.csv"
     df = pd.read_csv(file, header=0)
     df = df.to_numpy().tolist()
     lst1 = []
@@ -112,6 +142,11 @@ def get_spending_data():
     return (lst1, lst2)
 
 def collect_json(ms):
+    """
+    Input: None; Should be main street but there is only data for Washington Gateway
+    Output: Python dictionary containing lists and dictionaries from various helper functions for specified main street;
+            This will be used to send data to the React App
+    """
     data = dict()
     data["geo"] = create_geoJSON(ms)
     data["industry_graph"] = industry_count(ms)
@@ -235,7 +270,3 @@ def dudley_square():
 @mainstreet.route("/missionhill")
 def mission_hill():
     return collect_json("Mission Hill")
-
-@mainstreet.errorhandler(404)
-def page_not_found(e):
-    return "404 Page not Found"

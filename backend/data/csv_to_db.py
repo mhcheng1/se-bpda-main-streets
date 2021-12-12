@@ -7,8 +7,6 @@ import numpy as np
 This program will take a CSV file of all the Boston Main Streets busineess and add it to our database
 """
 
-#TODO: implement the table for Users and its relationship
-
 TABLES = {
     "business": """CREATE TABLE business (object_id integer, name VARCHAR(150), employment integer, naics_6 integer, naics_6_title VARCHAR(150), naics_2 integer, naics_2_title VARCHAR(150), PRIMARY KEY(object_id))""",
     "mainstreet": """CREATE TABLE mainstreet (id integer, name VARCHAR(100), PRIMARY KEY(id))""",
