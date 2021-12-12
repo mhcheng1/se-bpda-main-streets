@@ -40,17 +40,23 @@ function Business(url, msname, coordinates, zoom, link1, link2, link3) {
     return (
         <div>
             <Container><DistrictBar /></Container>
-            <div className="map"> {business[0]} </div>
             <div className="street"> <h2>{msname} Main Street </h2> </div>
-            <div className="generalinfo"> 
-                <p>Total number of businesses: {business[3][0]} </p> 
-                <p>Estimated number of employees: {business[3][1]} </p>
-                <p>Average employment size: {business[3][2]} </p>
+            <div className="box">
+                <div className="map"> {business[0]} </div>
+                <div className="generalinfo"> 
+                    <p>Total number of businesses: <strong> {business[3][0]} </strong></p> 
+                    <p>Estimated number of employees: <strong> {business[3][1]} </strong></p>
+                    <p>Average employment size: <strong> {business[3][2]} </strong></p>
+                    <div className="graph1title">
+                        <h6>Industrial Distribution of Businesses in {msname}</h6>
+                        <div className="graph1"><BusinessGraph/></div>
+                    </div>
+                    <div className="graph2title">
+                        <h6>Number of Businesses in {msname} Main Street Districts by Size</h6>
+                        <div className="graph2"><SizeGraph/></div>
+                    </div>
+                </div>
             </div>
-            <div className="graph1title"><h6>Industrial Distribution of Businesses in {msname}</h6></div>
-            <div className="graph1"><BusinessGraph/></div>
-            <div className="graph2title"><h6>Number of Businesses in {msname} Main Street Districts by Size</h6></div>
-            <div className="graph2"><SizeGraph/></div>
         </div>
     );
 }

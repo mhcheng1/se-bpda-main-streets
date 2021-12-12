@@ -1,8 +1,5 @@
-.map {
-  display: flexbox;
-  /* align-items:baseline; */
-  margin: 25px;
-  float: left;
+.box {
+  display: flex;
 }
 .street {
   /* position: absolute;
@@ -12,42 +9,10 @@
   width: 40%;
 }
 
-.generalinfo {
-  /* position: absolute; */
-  /* left: 700px;
-  top: 110px; */
-  float: left;
-  width: 40%;
-  margin-left: -10px;
-}
-
-.graph1title {
-  /* position: absolute; */
-  /* left: 760px;
-  top: 220px; */
-  float: left;
-  width: 30%;
-}
-
 .graph1 {
-    /* position: absolute; */
-    /* left: 500px;
-    top: 250px; */
-    margin-left: -210px;
-    float: left;
-  }
-
-.graph2title {
-  /* position: absolute; */
-  /* left: 720px;
-  top: 450px; */
-  float: left;
+  margin-left: -100px;
 }
 
 .graph2 {
-    /* position: absolute; */
-    /* left: 500px;
-    top: 480px; */
-    float: left;
-    margin-left: -210px;
-  }
+  margin-left: -100px;
+}

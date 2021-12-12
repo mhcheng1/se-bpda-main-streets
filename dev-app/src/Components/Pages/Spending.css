@@ -2,14 +2,10 @@
     display: flex;
 }
 
-.graph1title{
+.LineGraph1Title {
     text-align: center;
 }
 
-.graph2title {
-    text-align: center;
-}
-
-.graph3title {
+.LineGraph2Title {
     text-align: center;
 }
