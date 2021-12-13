@@ -10,13 +10,16 @@ import Spending from "./Components/Pages/Spending";
 
 function App() {
 
+  // Input:  None
+  // Output: Routes to all the different pages in the app 
+  // Description: The routes are being manually set with HashRouter 
+
   const BostonEmployment = () => {
     return Developing("#/business", "#/employment", "#/spending");
   }
   const BostonSpending = () => {
     return Developing("#/business", "#/employment", "#/spending");
   }
-
   const BrightonB = () => {
     return Business('https://se-bpda.buspark.io/brighton', 'Brighton', [42.35, -71.16], 15, "#/brighton", "#/brighton/employment", "#/brighton/spending");
   }
@@ -26,7 +29,6 @@ function App() {
   const BrightonS = () => {
     return Developing("#/brighton", "#/brighton/employment", "#/brighton/spending");
   }
-
   const ChinatownB = () => {
     return Business('https://se-bpda.buspark.io/chinatown', 'Chinatown', [42.3515, -71.061], 17, "#/chinatown", "#/chinatown/employment", "#/chinatown/spending");
   }
@@ -36,7 +38,6 @@ function App() {
   const ChinatownS = () => {
     return Developing("#/chinatown", "#/chinatown/employment", "#/chinatown/spending");
   }
-
   const WashingtonGatewayB = () => {
     return Business('https://se-bpda.buspark.io/washingtongateway', 'Washington Gateway', [42.34, -71.07], 15, "#/washingtongateway", "#/washingtongateway/employment", "#/washingtongateway/spending");
   }

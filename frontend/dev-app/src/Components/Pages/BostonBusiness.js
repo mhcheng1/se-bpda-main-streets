@@ -6,6 +6,11 @@ import BarGraph from '../BarGraph';
 import './Business.css';
 
 function BusinessData() {
+
+    // Input:  None
+    // Output: Python dictionary containing business data on all the industries and employees 
+    //         from all the Main Streets 
+
     const [industry_graph, setGraph1] = React.useState([]);
     const [employee_graph, setGraph2] = React.useState([]);
     const [stats, setStats] = React.useState([]);
@@ -25,6 +30,13 @@ function BusinessData() {
 }
 
 function BostonBusiness() {
+
+    // Input:  None 
+    // Output: Navigation bar with links to the other pages in the app; 
+    //         Map of Greater Boston and outlines of the Main Streets;
+    //         Text containing information about the number of employees and industries for all the Main Streets;
+    //         Two bar graphs that show the distribution of businesses and industries for all the current Main Streets 
+    
     const DistrictBar = () => {
         return NavigationBar("#/business", "#/employment", "#/spending");
     }

@@ -4,6 +4,11 @@ import {Container, Button, Spinner} from 'react-bootstrap';
 import NavigationBar from '../NavigationBar';
 
 function Developing(link1, link2, link3) {
+
+    // Input:  link 1, 2, 3: links to the other pages of the app in a string
+    // Output: Navigation bar with links to the other pages in the app;
+    //         A spinning wheel animation to indicate work that is in progress 
+
     const DistrictBar = () => {
         return NavigationBar(link1, link2, link3);
      }

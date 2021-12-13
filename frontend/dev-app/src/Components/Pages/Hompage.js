@@ -5,6 +5,12 @@ import Map from '../Map';
 import NavigationBar from '../NavigationBar';
 
 function Homepage() {
+
+    // Input:  None;
+    // Output: Navigation bar with links to the other pages in the app;
+    //         Map of Greater Boston Area with outlines of all the Main Streets;
+    //         Text of BPDA's mission and purpose 
+    
     const HomepageBar = () => {
         return NavigationBar("#/business", "#/employment", "#/spending");
     }

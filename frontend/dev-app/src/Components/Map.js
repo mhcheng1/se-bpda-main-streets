@@ -7,6 +7,9 @@ import './Map.css';
 
 function Map() {
 
+  // Input:  None;
+  // Output: A map of Greater Boston outlined in black 
+
   const districtStyle = {
     color: "red",
     fillColor: "red",

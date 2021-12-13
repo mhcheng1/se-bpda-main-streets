@@ -6,6 +6,13 @@ import BarGraph from '../BarGraph';
 import './Business.css';
 
 function BusinessData(url, coordinates, zoom) { 
+
+    // Input:  url is the link to the Flask API in a string;
+    //         coordinates is a list of decimals that outlines the Main Street;
+    //         zoom contains int values that will be used to zoom into the leaflet map 
+    // Output: Python dictionary containing the map coordinates, zoom values, and business
+    //         data on industries and employees for the current Main Street 
+
     const [business_data, setData] = React.useState([]);
     const [industry_graph, setGraph1] = React.useState([]);
     const [employee_graph, setGraph2] = React.useState([]);
@@ -26,6 +33,17 @@ function BusinessData(url, coordinates, zoom) {
 }
 
 function Business(url, msname, coordinates, zoom, link1, link2, link3) {
+
+    // Input:  url is the link to the Flask API in a string; 
+    //         msname is a string of the Main Street that will be used to query data from the database;
+    //         coordinates is a list of decimals that outlines the Main Street;
+    //         zoom contains int values that will be used to zoom into the leaflet map;
+    //         link 1, 2, 3: links to the other pages of the app in a string 
+    // Output: Navigation bar with links to the other pages in the app; 
+    //         Map of the current Main Street;
+    //         Text containing information about the number of employees and industries for the current Main Street;
+    //         Two bar graphs that show the distribution of businesses and industries for the current Main Street; 
+    
     const DistrictBar = () => {
         return NavigationBar(link1, link2, link3);
      }

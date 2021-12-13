@@ -8,6 +8,13 @@ import './Spending.css';
 
 
 function BusinessData(url, coordinates, zoom) { 
+
+    // Input:  url is the link to the Flask API in a string;
+    //         coordinates is a list of decimals that outlines the Main Street;
+    //         zoom contains int values that will be used to zoom into the leaflet map 
+    // Output: Python dictionary containing the map coordinates, zoom values, and business 
+    //         data on spending and trips for the current Main Street 
+            
     const [business_data, setData] = React.useState([]);
     const [in_person_spending_graph, setGraph1] = React.useState([]);
     const [trips_graph, setGraph2] = React.useState([]);
@@ -26,6 +33,16 @@ function BusinessData(url, coordinates, zoom) {
 }
 
 function Spending(url, msname, coordinates, zoom, link1, link2, link3) {
+
+    // Input:  url is the link to the Flask API in a string; 
+    //         msname is a string of the Main Street that will be used to query data from the database;
+    //         coordinates is a list of decimals that outlines the Main Street;
+    //         zoom contains int values that will be used to zoom into the leaflet map;
+    //         link 1, 2, 3: links to the other pages of the app in a string 
+    // Output: Navigation bar with links to the other pages in the app; 
+    //         Map of the current Main Street;
+    //         Two line graphs that visualize the trips and spending distribution for the current Main Street 
+
     const DistrictBar = () => {
         return NavigationBar(link1, link2, link3);
      }

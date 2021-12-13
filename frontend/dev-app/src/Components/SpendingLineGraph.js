@@ -3,6 +3,12 @@ import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsiv
 
 
 function LineGraph(data, x_axis, y_axis) {
+
+    // Input:  data is a Python dictionary that contains information on the spending distribution of a Main Street;
+    //         x_axis is a key to the data dictionary that will give the x values for the graph;
+    //         y_axis is a key to the data dictionary that will give the y values for the graph; 
+    // Output: A line graph that visualizes the distribution of spending over a set of time 
+
     return (
         <LineChart
           width={700}
