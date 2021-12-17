@@ -22,6 +22,12 @@ function NavigationBar(busi_link, employ_link, spend_link) {
               <NavDropdown.Item href="#/washingtongateway">
                 Washington Gateway
               </NavDropdown.Item>
+              <NavDropdown.Item href="#/fourcorners">
+                Four Corners
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#/allstonvillage">
+                Allston Village
+              </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href={busi_link}>Business</Nav.Link>
             <Nav.Link href={employ_link}>Employment</Nav.Link>

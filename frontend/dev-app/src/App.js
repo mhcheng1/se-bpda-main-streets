@@ -68,6 +68,56 @@ function App() {
       "#/chinatown/spending"
     );
   };
+  const FourCornersB = () => {
+    return Business(
+      "https://se-bpda.buspark.io/fourcorners",
+      "Four Corners",
+      [42.301, -71.0779],
+      15.5,
+      "#/fourcorners",
+      "#/fourcorners/employment",
+      "#/fourcorners/spending"
+    );
+  };
+  const FourCornersE = () => {
+    return Developing(
+      "#/fourcorners",
+      "#/fourcorners/employment",
+      "#/fourcorners/spending"
+    );
+  };
+  const FourCornersS = () => {
+    return Developing(
+      "#/fourcorners",
+      "#/fourcorners/employment",
+      "#/fourcorners/spending"
+    );
+  };
+  const AllstonVillageB = () => {
+    return Business(
+      "https://se-bpda.buspark.io/allstonvillage",
+      "Allston Village",
+      [42.353, -71.134],
+      15.5,
+      "#/allstonvillage",
+      "#/allstonvillage/employment",
+      "#/allstonvillage/spending"
+    );
+  };
+  const AllstonVillageE = () => {
+    return Developing(
+      "#/allstonvillage",
+      "#/allstonvillage/employment",
+      "#/allstonvillage/spending"
+    );
+  };
+  const AllstonVillageS = () => {
+    return Developing(
+      "#/allstonvillage",
+      "#/allstonvillage/employment",
+      "#/allstonvillage/spending"
+    );
+  };
   const WashingtonGatewayB = () => {
     return Business(
       "https://se-bpda.buspark.io/washingtongateway",
@@ -120,6 +170,20 @@ function App() {
             <Route path="/chinatown" element={<ChinatownB />} />
             <Route path="/chinatown/employment" element={<ChinatownE />} />
             <Route path="/chinatown/spending" element={<ChinatownS />} />
+
+            <Route path="/fourcorners" element={<FourCornersB />} />
+            <Route path="/fourcorners/employment" element={<FourCornersE />} />
+            <Route path="/fourcorners/spending" element={<FourCornersS />} />
+
+            <Route path="/allstonvillage" element={<AllstonVillageB />} />
+            <Route
+              path="/allstonvillage/employment"
+              element={<AllstonVillageE />}
+            />
+            <Route
+              path="/allstonvillage/spending"
+              element={<AllstonVillageS />}
+            />
 
             <Route path="/washingtongateway" element={<WashingtonGatewayB />} />
             <Route
