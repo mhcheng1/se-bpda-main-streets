@@ -4,6 +4,8 @@ Boston Main Street District Viewer is a project from the BPDA Research Division 
 
 This is part of a broader initiative to understand the current environment in Boston. More research produced by the Boston Planning and Development Agency can be found on the BPDA Research Website: www.bostonplans.org/research
 
+Visit the deployed Boston Main Street District Viewer [here](https://bu-spark.github.io/se-bpda-main-streets/)
+
 **Important Note**: At the moment there is only complete data for the main street Washington Gateway. The other main streets (Brighton, Chinatown, Four Corners, Allston Village) only have business data. Until more data is added, more main streets can be added.
 
 ## Technical Architecture 
