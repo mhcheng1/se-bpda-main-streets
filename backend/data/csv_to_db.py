@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 
 """
-This program will take a CSV file of all the Boston Main Streets busineess and add it to our database
+This program will take a CSV file of all the Boston Main Streets businesses and add it a PostgreSQL database. This database is based on MainStreets_Business_List.csv.
 """
 
 TABLES = {
@@ -28,26 +28,22 @@ DB_PORT = ''
 
 DB_URL = 'postgresql://' + DB_USER + ':' + DB_PASS + '@' + DB_HOST +  ':' + DB_PORT + '/' + DB_NAME
 
-def get_data_from_csv(file, simplified):
+def get_data_from_csv(file):
+    """
+    Input: File name
+    Output: A list of lists of the inputted files data
+    Description: Turn csv file into list of lists
+    """
     df = pd.read_csv(file, header=0)
     df = df.to_numpy().tolist()
-    if not simplified:
-        df = remove_unneeded_columns(df)
     return df
 
-def remove_unneeded_columns(df):
-#TODO: need to fix this so it returns the same list as the simplified data
-    #This will allow for different types of csv to be used by the same script
-    temp = []
-    #B: 0->objectID, 1->status, 8->name
-    #L: 5->lat, 6->post, 7->long, 9->street
-    #I: 4->NAICS, 16->F2017, 17->F2017_name, 18->F2_digit, 19-> F2_name
-    for r in df:
-        ls = r[0:1] + r[2:3] + r[6:8] + r[9:25]
-        temp.append(ls)
-    return temp
-
 def create_all_tables(cnx):
+    """
+    Input: Database connection
+    Output: None
+    Description: This function creates all the tables in the database
+    """
     cursor = cnx.cursor()
     for table_name in TABLES:
         table_query = TABLES[table_name]
@@ -61,7 +57,12 @@ def create_all_tables(cnx):
             print("OK")
     cursor.close()
 
-def fill_all_tables(cnx, df, simplified):
+def fill_all_tables(cnx, df):
+    """
+    Input: Database connection, list of lists containing the data from file
+    Output: None
+    Description: Populate the databse with the data from the file
+    """
     cursor = cnx.cursor()
 
     busi_id = None
@@ -73,7 +74,6 @@ def fill_all_tables(cnx, df, simplified):
     postal = None
 
     for i, r in enumerate(df):
-
         busi_id = i+1
         busi_name = r[3]
         employment = r[10]
@@ -110,12 +110,14 @@ def fill_all_tables(cnx, df, simplified):
             cursor.execute(query_busi_main, data_busi_main)
             cnx.commit()
 
-        if not simplified:
-            fill_busi_online_table(cnx, busi_id, r[12], r[13], r[14], r[15], r[16], cursor)
-
     cursor.close()
 
 def fill_mainstreet_table(cnx):
+    """
+    Input: Database connection
+    Output: None
+    Description: Create the mainstreet table consisting of the main street name and its corresponding id
+    """
     cursor = cnx.cursor()
     for val in MAINSTREETS:
         if MAINSTREETS[val] == None:
@@ -127,6 +129,11 @@ def fill_mainstreet_table(cnx):
     cursor.close()
 
 def fill_online_profile_table(cnx):
+    """
+    Input: Database connection
+    Output: None
+    Description: Create the online_profile table which has the name of the online profile and its corresponding id
+    """
     cursor = cnx.cursor()
     l = ['Google', 'Yelp', 'Bing', 'YP', 'DataAxle']
     for i, val in enumerate(l):
@@ -137,6 +144,17 @@ def fill_online_profile_table(cnx):
     cursor.close()
 
 def fill_busi_online_table(cnx, b_id, yelp, bing, yp, dataaxle, google, cursor):
+    """
+    Note - This is currently unused by MainStreets_Business_List.csv's data. However it is used in washington_gateway_csv. 
+           If this data is used in the future, this function can be used.
+    Input: 
+        cnx - A database connection,
+        cursor - database cursor
+        b_id - the business id from the business table
+        yelp, bing, yp, dataaxle, google -  a 'Yes' or 'No' String of whether or not the corresponding business has this online profile
+    Output: None
+    Description: Create the busi_online table 
+    """
     query_op = ("""INSERT INTO busi_online 
                     (b_id, op_id) 
                     VALUES (%s, %s)""")
@@ -162,6 +180,11 @@ def fill_busi_online_table(cnx, b_id, yelp, bing, yp, dataaxle, google, cursor):
         cnx.commit()
 
 def drop_all_tables():
+    """
+    Input: None
+    Output: None
+    Description: Drop all current tables
+    """
     cnx = psycopg2.connect(DB_URL)
     cursor = cnx.cursor()
     query = """DROP TABLE business, mainstreet, location, online_profile, busi_online, busi_to_main;"""
@@ -172,14 +195,19 @@ def drop_all_tables():
 
     print("complete")
 
-def populate_database(file, simplified):
-    data = get_data_from_csv(file, simplified)
+def populate_database(file):
+    """
+    Input: File name
+    Output: None
+    Description: Get data from the inputted file, create the database tables, then populate the database tables through the helper functions
+    """
+    data = get_data_from_csv(file)
 
     cnx = psycopg2.connect(DB_URL)
-    create_all_tables(cnx) #This works but only needs to be runned once
+    create_all_tables(cnx) 
     fill_online_profile_table(cnx)
     fill_mainstreet_table(cnx)
-    fill_all_tables(cnx, data, simplified)
+    fill_all_tables(cnx, data)
     cnx.close()
 
     print("complete")

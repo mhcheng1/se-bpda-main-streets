@@ -8,9 +8,9 @@ db = SQLAlchemy()
 
 def create_app(config_name):
     """
-    Input: Type of configuration for this Flask App
-    Output: Flask App
-    Description: Create and return Flask App
+    Input: The type of configuration for this Flask app
+    Output: Flask app
+    Description: Create and return the Flask app
     """
     app = Flask(__name__)
     app.config.from_object(config[config_name])

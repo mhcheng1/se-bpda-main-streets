@@ -7,7 +7,7 @@ from app import db
 
 def create_geoJSON(ms):
     """
-    Input: A string of the main street that will be querired from the database
+    Input: A string of the main street that will be queried from the database
     Output: Python dictionary of the locational data (longitude, latitude) of 
             the businesses for the specified main street in the form of a GeoJSON
     """
@@ -24,7 +24,7 @@ def create_geoJSON(ms):
 
 def industry_count(ms):
     """
-    Input: A string of the main street that will be querired from the database
+    Input: A string of the main street that will be queried from the database
     Output: Python dictionary containing the number of businesses per type of 
             industry in the form of ReCharts, a React graph library, data
     """
@@ -44,7 +44,7 @@ def industry_count(ms):
 
 def busi_info(ms):
     """
-    Input: A string of the main street that will be querired from the database
+    Input: A string of the main street that will be queried from the database
     Output: A list containing data of specified main street
             Index 1 - number of businesses in the specified main street
             Index 2 - number of employees in the specified main street
@@ -59,7 +59,7 @@ def busi_info(ms):
 
 def employment_count(ms):
     """
-    Input: A string of the main street that will be querired from the database
+    Input: A string of the main street that will be queried from the database
     Output: Python dictionary containing the number of employees per type of 
             industry in the form of ReCharts, a React graph library, data
     """
@@ -81,7 +81,7 @@ def homepage_data():
     """
     Input: None
     Output: Python dictionary of all data for all mainstreets of boston 
-            (number of business per industry, number of employees per industry, total number of businesses, 
+            (number of businesses per industry, number of employees per industry, total number of businesses, 
             total number of employees, average number of employees per businesses)
     """
     try:
@@ -144,8 +144,8 @@ def get_spending_data():
 def collect_json(ms):
     """
     Input: None; Should be main street but there is only data for Washington Gateway
-    Output: Python dictionary containing lists and dictionaries from various helper functions for specified main street;
-            This will be used to send data to the React App
+    Output: Python dictionary containing lists and dictionaries from the various helper functions for the specified main street;
+            This will be used to send data to the React app
     """
     data = dict()
     data["geo"] = create_geoJSON(ms)

@@ -14,7 +14,7 @@ import "./Map.css";
 
 function Map() {
   // Input:  None;
-  // Output: A map of Greater Boston outlined in black
+  // Output: An interactive map of Greater Boston outlined in black with all the main streets highlighted in red
 
   const districtStyle = {
     color: "red",
