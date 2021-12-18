@@ -28,6 +28,8 @@ This was built based on data given in backend/data/MainStreets_Business_List.csv
 
 In backend/data/csv_to_db.py, the tables are created and then populated.
 
+The [Main_Streets_Data branch](https://github.com/BU-Spark/se-bpda-main-streets/tree/Main_Streets_Data) is where the main street data is added to by BPDA.
+
 **Important Note**: This database cannot be worked on anymore due to the limitations of a free Heroku account. This database is only temporary and is now used to display the current data within the tables. If future work is needed, such as adding features to the table, I recommend creating a new database and using the script provided (csv_to_db.py).
 
 Diagram:
@@ -197,6 +199,8 @@ If react scripts are needed (an error arises when deploying for react scripts)
 `npm install react-scripts --save`
 
 ### Deploy React App to Github Pages
+
+The [gh-pages branch](https://github.com/BU-Spark/se-bpda-main-streets/tree/gh-pages) is used in the Github Pages deployment process.
 
 Enter frontend directory
 
