@@ -1,0 +1,40 @@
+.business-title {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.business-box {
+  display: flex;
+}
+
+.business-map {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.business-generalinfo {
+  margin-top: 20px;
+  margin-left: 5%;
+}
+
+.business-generalinfo p {
+  line-height: 35px;
+}
+
+.business-graph1-title {
+  text-align: center;
+}
+
+.business-graph1 {
+  margin-left: -150px;
+}
+
+.business-graph2-title {
+  text-align: center;
+}
+
+.business-graph2 {
+  margin-left: -150px;
+}

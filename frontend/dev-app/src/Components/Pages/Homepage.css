@@ -1,0 +1,18 @@
+.homepage-block {
+  display: flex;
+  margin: 25px;
+}
+
+.homepage-map {
+  flex: 1;
+  position: right;
+  right: 200px;
+}
+
+.homepage-generalinfo {
+margin-left: 5%;
+}
+
+.homepage-generalinfo p {
+line-height: 35px;
+}

@@ -1,0 +1,33 @@
+.spending-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.spending-box {
+    display: flex;
+}
+
+.spending-map {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.spending-linegraph1-title {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.spending-linegraph1 {
+    margin-left: 20px;
+}
+
+.spending-linegraph2-title {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.spending-linegraph2 {
+    margin-left: 20px;
+}

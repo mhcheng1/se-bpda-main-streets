@@ -1,0 +1,39 @@
+.employment-box {
+    display: flex;
+}
+
+.employment-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+.employment-map {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+
+.employment-graph1-title {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.employment-graph1 {
+    margin-left: -50px;
+}
+
+.employment-graph2-title {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.employment-graph2 {
+    margin-left: -150px;
+}
+
+
+.employment-graph3-title {
+    margin-top: 20px;
+    text-align: center;
+}
