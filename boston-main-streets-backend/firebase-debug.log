@@ -1,0 +1,57 @@
+[debug] [2022-05-01T00:31:03.503Z] ----------------------------------------------------------------------
+[debug] [2022-05-01T00:31:03.504Z] Command:       /usr/local/bin/node /usr/local/bin/firebase emulators:start
+[debug] [2022-05-01T00:31:03.505Z] CLI Version:   10.4.1
+[debug] [2022-05-01T00:31:03.505Z] Platform:      darwin
+[debug] [2022-05-01T00:31:03.505Z] Node Version:  v16.13.1
+[debug] [2022-05-01T00:31:03.506Z] Time:          Sat Apr 30 2022 20:31:03 GMT-0400 (Eastern Daylight Time)
+[debug] [2022-05-01T00:31:03.506Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-01T00:31:03.579Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-05-01T00:31:03.580Z] > authorizing via signed-in user (yyaustin@bu.edu)
+[info] i  emulators: Starting emulators: auth, database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, database"}}
+[debug] [2022-05-01T00:31:03.592Z] [hub] writing locator at /var/folders/kt/3dcnzd4j0k3btw6148wb8htr0000gn/T/hub-boston-main-streets.json
+[debug] [2022-05-01T00:31:03.599Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/boston-main-streets [none]
+[debug] [2022-05-01T00:31:03.911Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/boston-main-streets 200
+[debug] [2022-05-01T00:31:03.911Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/boston-main-streets {"projectId":"boston-main-streets","projectNumber":"418881851460","displayName":"boston-main-streets","name":"projects/boston-main-streets","resources":{"hostingSite":"boston-main-streets","realtimeDatabaseInstance":"boston-main-streets-default-rtdb"},"state":"ACTIVE"}
+[debug] [2022-05-01T00:31:03.912Z] database rules config:  [{"instance":"boston-main-streets-default-rtdb","rules":"/Users/austinwang/Projects/boston-main-streets/boston-main-streets-backend/database.rules.json"}]
+[debug] [2022-05-01T00:31:03.914Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2022-05-01T00:31:03.914Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-05-01T00:31:03.914Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2022-05-01T00:31:03.914Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/austinwang/.cache/firebase/emulators/firebase-database-emulator-v4.7.3.jar","--host","localhost","--port",9000],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host"],"joinArgs":false} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/austinwang/.cache/firebase/emulators/firebase-database-emulator-v4.7.3.jar\",\"--host\",\"localhost\",\"--port\",9000],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\"],\"joinArgs\":false}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2022-05-01T00:31:05.007Z] 20:31:05.006 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"20:31:05.006 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2022-05-01T00:31:05.158Z] 20:31:05.158 [main] INFO com.firebase.server.forge.App$ - Listening at localhost:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"20:31:05.158 [main] INFO com.firebase.server.forge.App$ - Listening at localhost:9000\n"}}
+[debug] [2022-05-01T00:31:11.490Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-05-01T00:31:11.490Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2022-05-01T00:31:11.490Z] Starting Emulator UI with command {"binary":"node","args":["/Users/austinwang/.cache/firebase/emulators/ui-v1.6.5/server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/austinwang/.cache/firebase/emulators/ui-v1.6.5/server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2022-05-01T00:31:11.604Z] Web / API server started at localhost:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at localhost:4000\n"}}
+[debug] [2022-05-01T00:31:11.755Z] >>> HTTP REQUEST PUT http://localhost:9000/.settings/rules.json?ns=boston-main-streets-default-rtdb  
+ {
+  "rules": {
+    ".read": "now < 1653883200000",  // 2022-5-30
+    ".write": "now < 1653883200000",  // 2022-5-30
+  }
+}
+[debug] [2022-05-01T00:31:11.838Z] <<< HTTP RESPONSE 200 {"content-length":"15","content-type":"application/json; charset=utf-8","access-control-allow-origin":"*","cache-control":"no-cache","x-firebase-project-id":"boston-main-streets-default-rtdb","x-firebase-project-number":"123456789","x-firebase-uuid":"b46b0da2-a5e1-4e21-ab31-fb174bda94be"}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://localhost:4000                │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI            │
+├────────────────┼────────────────┼────────────────────────────────┤
+│ Authentication │ localhost:9099 │ http://localhost:4000/auth     │
+├────────────────┼────────────────┼────────────────────────────────┤
+│ Database       │ localhost:9000 │ http://localhost:4000/database │
+└────────────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
