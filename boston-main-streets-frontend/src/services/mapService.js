@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL = 'http://localhost:3001/map'
+const baseURL = '/api/map'
 
 const getBostonBoundary = async () => {
     const res = await axios.get(`${baseURL}/boundary`)

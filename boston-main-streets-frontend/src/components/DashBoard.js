@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { defaultDistrict } from "../reducers/districtReducer";
 import { useHistory } from "react-router-dom";
 import { Container, Row, Col, ButtonGroup, Button} from "react-bootstrap";
-import EmploymentDataBoard from "./EmploymentDataBoard";
+import EmploymentBoard from "../features/EmploymentBoard";
 import BusinessBoard from "../features/BusinessBoard";
 import { removeMapBusiness } from "../reducers/mapBusinessReducer";
 
@@ -46,7 +46,7 @@ const DashBoard = () => {
                 </Col>
             </Row>
 
-            {tab === "Employment Data" && <EmploymentDataBoard />}
+            {tab === "Employment Data" && <EmploymentBoard />}
             {tab === "Businesses" && <BusinessBoard />}
         </Container>
     )

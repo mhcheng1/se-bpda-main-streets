@@ -8,12 +8,17 @@ const businessRouter = require('./controllers/businessRouter')
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static('build'))
 
 app.get('/', async (req, res) => {
     res.send('<h1>Hello BPDA</h1>')
 })
 
-app.use('/map', mapRouter)
-app.use('/business', businessRouter)
+app.get('/api', async (req, res) => {
+    res.send('<h1>Which api?</h1>')
+})
+
+app.use('/api/map', mapRouter)
+app.use('/api/business', businessRouter)
 
 module.exports = app

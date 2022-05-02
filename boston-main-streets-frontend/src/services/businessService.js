@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL = 'http://localhost:3001/business'
+const baseURL = '/api/business'
 
 const getAllBusiness = async () => {
     const res = await axios.get(baseURL)

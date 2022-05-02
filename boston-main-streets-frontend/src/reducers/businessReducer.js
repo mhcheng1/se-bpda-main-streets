@@ -1,6 +1,6 @@
 import businessService from "../services/businessService"
 
-const businessReducer = (state = null, action) => {
+const businessReducer = (state = [], action) => {
     switch (action.type) {
         case ("INIT_BUSINESS"):
             return action.data.businessData

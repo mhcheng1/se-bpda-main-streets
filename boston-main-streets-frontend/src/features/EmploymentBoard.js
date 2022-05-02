@@ -1,22 +1,35 @@
 import React from "react";
 import { Row, Col, CardGroup, Accordion } from "react-bootstrap";
-import CardItem from "./CardItem";
+import { useSelector } from "react-redux";
+import CardItem from "../components/CardItem";
 
-const EmploymentDataBoard = () => {
+const EmploymentBoard = () => {
+
+    // calcuate summary
+    const businesses = useSelector(({business}) => business)
+    const totalEmp = businesses.map((business) => business.estimated_employment).reduce((a, b) => a+b, 0)
+    const totalBusiness = businesses.length
+    const averageEmp = Math.floor(totalEmp / totalBusiness)
 
     const cardTitles = [
-        "Estimated Number of Employees:",
-        "Total Number of Businesses:",
-        "Average Employment Size:"
+        { title: "Estimated Number of Employees:", text: totalEmp },
+        { title: "Total Number of Businesses:", text: totalBusiness },
+        { title: "Average Employment Size:", text: averageEmp }
     ]
+
+    if (businesses.length === 0) {
+        return (
+            <div>Loading...</div>
+        )
+    }
 
     return (
         <>
             <Row>
                 <Col>
                     <CardGroup>
-                        {cardTitles.map((title, index) => (
-                            <CardItem key={index} title={title} text={1010} />
+                        {cardTitles.map((card, index) => (
+                            <CardItem key={index} title={card.title} text={card.text} />
                         ))}
                     </CardGroup>
                 </Col>
@@ -42,4 +55,4 @@ const EmploymentDataBoard = () => {
     )
 }
 
-export default EmploymentDataBoard
+export default EmploymentBoard
