@@ -22,7 +22,7 @@ const TopBar = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav>
                         <Nav.Link href="/">Map</Nav.Link>
-                        <Nav.Link href="/">Upload</Nav.Link>
+                        <Nav.Link href="/upload">Upload</Nav.Link>
                         {
                             user
                                 ? (

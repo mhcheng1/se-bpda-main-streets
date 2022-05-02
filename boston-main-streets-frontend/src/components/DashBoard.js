@@ -40,7 +40,7 @@ const DashBoard = () => {
             <Row>
                 <Col>
                     <h1>
-                        {districtName}
+                        {districtName.replace('-', ' ')}
                         <Button variant="outline-primary" onClick={() => handleBack()}><i className="bi bi-house-door"></i></Button>
                     </h1>
                 </Col>

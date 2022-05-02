@@ -8,6 +8,7 @@ import { initUser } from "./reducers/userReducer";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import MainPage from "./pages/MainPage";
+import UploadPage from "./pages/UploadPage";
 
 const App = () => {
 
@@ -36,6 +37,9 @@ const App = () => {
       </Route>
       <Route path={"/login"}>
         {(!user) ? <LoginPage /> : <Redirect to={"/"} />}
+      </Route>
+      <Route path={"/upload"}>
+        <UploadPage />
       </Route>
       <Route path={"/"}>
         <MainPage />

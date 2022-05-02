@@ -42,14 +42,14 @@ const DistrictList = () => {
                     if (name === districtName) {
                         return (
                             <Form.Check
-                                key={index} label={name} name="list" type="radio" checked
+                                key={index} label={name.replace('-', ' ')} name="list" type="radio" checked
                                 id={`inline-list-${index}`} onChange={() => handleChange(name)}
                             />
                         )
                     } else {
                         return (
                             <Form.Check
-                                key={index} label={name} name="list" type="radio"
+                                key={index} label={name.replace('-', ' ')} name="list" type="radio"
                                 id={`inline-list-${index}`} onChange={() => handleChange(name)}
                             />
                         )

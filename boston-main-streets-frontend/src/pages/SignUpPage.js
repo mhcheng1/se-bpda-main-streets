@@ -25,10 +25,13 @@ const SignUpPage = () => {
     }
 
     return (
-        <UserForm handleSubmit={handleSignUp} ref={userFormRef}>
-            <Button variant="primary" type="submit">Sign Up</Button>
-            <Button variant="secondary" onClick={() => history.push("/")}>Back</Button>
-        </UserForm>
+        <div>
+            <h3>Sign Up</h3>
+            <UserForm handleSubmit={handleSignUp} ref={userFormRef}>
+                <Button variant="primary" type="submit">Sign Up</Button>
+                <Button variant="secondary" onClick={() => history.push("/")}>Back</Button>
+            </UserForm>
+        </div>
     )
 }
 
