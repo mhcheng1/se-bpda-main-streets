@@ -10,8 +10,10 @@ app.use(cors())
 app.use(express.json())
 app.use(express.static('build'))
 
-app.get('/', async (req, res) => {
-    res.send('<h1>Hello BPDA</h1>')
+app.get('/*', async (req, res) => {
+    res.sendFile(path.join(__dirname, './build/index.html'), (error) => {
+        res.status(500).send(error)
+    })
 })
 
 app.get('/api', async (req, res) => {
