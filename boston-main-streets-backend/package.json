@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf build && cd ../boston-main-streets-frontend && npm run build && cp -r build ../boston-main-streets-backend",
     "deploy": "cd .. && git subtree push --prefix boston-main-streets-backend heroku main",
-    "deploy:full": "npm run build:ui && git add . && git commit -m heroku deployment && git push && npm run deploy",
+    "deploy:full": "npm run build:ui && git add . && git commit -m 'heroku deployment' && git push && npm run deploy",
     "heroku:logs": "heroku logs --tail"
   },
   "author": "Noledge",
