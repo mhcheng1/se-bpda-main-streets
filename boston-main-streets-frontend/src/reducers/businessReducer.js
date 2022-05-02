@@ -6,6 +6,13 @@ const businessReducer = (state = null, action) => {
             return action.data.businessData
         case ("SET_BUSINESS"):
             return action.data.businessData
+        case ("UPDATE_BUSINESS"):
+            const newBusiness = action.data.newBusiness
+            return state.map((business) => (
+                (business.id === newBusiness.id)
+                    ? newBusiness
+                    : business
+            ))
         default:
             return state
     }
@@ -34,6 +41,18 @@ export const setBusiness = (districtName) => {
             type: "SET_BUSINESS",
             data: {
                 businessData: businessData
+            }
+        })
+    }
+}
+
+export const updateBusiness = (districtName, id, newData) => {
+    return async (dispatch) => {
+        const newBusiness = await businessService.updateOneBusiness(districtName, id, newData)
+        dispatch({
+            type: "UPDATE_BUSINESS",
+            data: {
+                newBusiness: newBusiness
             }
         })
     }

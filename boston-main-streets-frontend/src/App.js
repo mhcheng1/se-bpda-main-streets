@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { initMapBoundary } from "./reducers/mapBoundaryReducer";
 import { initMapDistricts } from "./reducers/mapDistrictsReducer";
 import { initBusiness } from "./reducers/businessReducer";
+import { initUser } from "./reducers/userReducer";
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
 import MainPage from "./pages/MainPage";
-import BusinessForm from "./features/BusinessForm";
 
 const App = () => {
 
   // redux states
+  const user = useSelector(({user}) => user)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -21,25 +24,18 @@ const App = () => {
 
     // set business data
     dispatch(initBusiness())
+
+    // set user status
+    dispatch(initUser())
   }, [dispatch])
 
-  // test
-  const test = {
-    "FIELD1": 284,
-      "ZIP_code": 2134,
-        "business_name": "youth center at charles view",
-          "employment_buckets": "1 to 9",
-            "estimated_employment": 9,
-              "id": "-N0y5jr4Px2dF3DvhCQG",
-                "latitude": 42.3528,
-                  "longitude": -71.1328,
-                    "mainstreet": "Allston-Village",
-                      "street_address": "75 Stadium Way"
-  }
   return (
     <Switch>
-      <Route path={"/test"}>
-        <BusinessForm business={test}/>
+      <Route path={"/signup"}>
+        {(!user) ? <SignUpPage /> : <Redirect to={"/"} />}
+      </Route>
+      <Route path={"/login"}>
+        {(!user) ? <LoginPage /> : <Redirect to={"/"} />}
       </Route>
       <Route path={"/"}>
         <MainPage />

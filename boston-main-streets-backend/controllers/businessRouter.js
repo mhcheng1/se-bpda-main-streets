@@ -48,13 +48,13 @@ businessRouter.get(('/:districtName/:id'), async (req, res) => {
 })
 
 // update by id
-// -N0y5jr4Px2dF3DvhCQG
+// - N11HzEKrAe_tFR2sI0d
 businessRouter.put('/:districtName/:id', async (req, res) => {
     const districtName = req.params.districtName
     const id = req.params.id
     const newData = req.body
     await set(ref(fireDb, `business/${districtName}/${id}`), newData)
-    res.status(200).end()
+    res.status(200).json(newData)
 })
 
 module.exports = businessRouter

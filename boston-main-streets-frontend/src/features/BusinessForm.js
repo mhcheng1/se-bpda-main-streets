@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Button, Form } from "react-bootstrap";
 import InputItem from "../components/InputItem";
+import { updateBusiness } from "../reducers/businessReducer";
 
 const BusinessForm = ({business}) => {
 
@@ -9,6 +11,9 @@ const BusinessForm = ({business}) => {
     const [address, setAddress] = useState(business.street_address)
     const [code, setCode] = useState(business.ZIP_code)
     const [employment, setEmployment] = useState(business.estimated_employment)
+
+    // redux states
+    const dispatch = useDispatch()
 
     // input labels
     const inputs = [
@@ -30,7 +35,7 @@ const BusinessForm = ({business}) => {
             estimated_employment: employment,
             ...oldData
         }
-        console.log(newData)
+        dispatch(updateBusiness(newData.mainstreet, newData.id, newData))
     }
 
     return (

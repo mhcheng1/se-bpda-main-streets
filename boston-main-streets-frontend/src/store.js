@@ -5,13 +5,17 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import districtReducer from "./reducers/districtReducer";
 import mapBoundaryReducer from "./reducers/mapBoundaryReducer";
 import mapDistrictsReducer from "./reducers/mapDistrictsReducer";
+import mapBusinessReducer from "./reducers/mapBusinessReducer";
 import businessReducer from "./reducers/businessReducer";
+import userReducer from "./reducers/userReducer";
 
 const reducer = combineReducers({
     district: districtReducer,
     mapBoundary: mapBoundaryReducer,
     mapDistricts: mapDistrictsReducer,
-    business: businessReducer
+    mapBusiness: mapBusinessReducer,
+    business: businessReducer,
+    user: userReducer
 })
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)))

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import MapItem from "../components/MapItem";
-import { GeoJSON } from "react-leaflet";
+import { GeoJSON, Marker, Popup } from "react-leaflet";
 import { bostonCenter, nameRule } from "../constants";
 
 const MainMap = () => {
@@ -10,6 +10,7 @@ const MainMap = () => {
     const districtName = useSelector(({ district }) => district)
     const bostonBoundary = useSelector(({ mapBoundary }) => mapBoundary)
     const bostonDistricts = useSelector(({ mapDistricts }) => mapDistricts)
+    const mapBusiness = useSelector(({ mapBusiness }) => mapBusiness)
 
     // filter district
     const districtData = (districtName === "Boston")
@@ -42,6 +43,13 @@ const MainMap = () => {
         <MapItem key={districtName} center={center} zoom={zoom}>
             <GeoJSON data={bostonBoundary} />
             <GeoJSON key={districtName} data={districtData} style={localStyle} />
+            {mapBusiness && (
+                <Marker position={[mapBusiness.latitude, mapBusiness.longitude]}>
+                    <Popup>
+                        Pop
+                    </Popup>
+                </Marker>
+            )}
         </MapItem>
     )
 }

@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Container, Row, Col, ButtonGroup, Button} from "react-bootstrap";
 import EmploymentDataBoard from "./EmploymentDataBoard";
 import BusinessBoard from "../features/BusinessBoard";
+import { removeMapBusiness } from "../reducers/mapBusinessReducer";
 
 const DashBoard = () => {
 
@@ -20,10 +21,11 @@ const DashBoard = () => {
     // go back to boston page
     const handleBack = () => {
         dispatch(defaultDistrict())
+        dispatch(removeMapBusiness())
     }
 
     return (
-        <Container fluid>
+        <Container fluid style={{"height": "100vh"}}>
             <Row className="justify-content-md-center">
                 <Col>
                     <ButtonGroup>
