@@ -48,7 +48,7 @@ const BusinessesBoard = () => {
                 <CardItem key={index} title={<Button variant="link" onClick={() => handleView(business)}> {business.business_name.toUpperCase()} </Button>} text={`Address: ${business.street_address}`}>
                     <Row>
                         <Col>
-                            <Button variant="link" onClick={() => handleView(business)}>Website</Button>
+                            <Button variant="link" onClick={() => handleView()}>Website</Button>
                         </Col>
                         <Col>
                             {
