@@ -1,5 +1,6 @@
 import axios from "axios";
-const baseURL = '/api/map'
+const prefix = (window.location.hostname === "localhost") ? (process.env.REACT_APP_URL_BACKEND) : ""
+const baseURL = `${prefix}/api/map`
 
 const getBostonBoundary = async () => {
     const res = await axios.get(`${baseURL}/boundary`)

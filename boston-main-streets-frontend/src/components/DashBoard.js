@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { defaultDistrict } from "../reducers/districtReducer";
 import { useHistory } from "react-router-dom";
-import { Container, Row, Col, ButtonGroup, Button} from "react-bootstrap";
+import { Container, Row, Col, ButtonGroup} from "react-bootstrap";
 import EmploymentBoard from "../features/EmploymentBoard";
 import BusinessBoard from "../features/BusinessBoard";
 import { removeMapBusiness } from "../reducers/mapBusinessReducer";
+import Button from '@mui/material/Button';
+
 
 const DashBoard = () => {
 
@@ -23,6 +25,10 @@ const DashBoard = () => {
         dispatch(defaultDistrict())
         dispatch(removeMapBusiness())
     }
+    
+    const buttonStyle = {
+          backgroundImage: "url(" + "https://patronicity.s3.amazonaws.com/static/SponsorLogos/BMS_Icon_NoTag_RGB.JPG" + ")"
+    }
 
     return (
         <Container fluid style={{"height": "100vh"}}>
@@ -38,12 +44,12 @@ const DashBoard = () => {
             </Row>
 
             <Row>
-                <Col>
                     <h1>
-                        {districtName.replace('-', ' ')}
-                        <Button variant="outline-primary" onClick={() => handleBack()}><i className="bi bi-house-door"></i></Button>
+                        {districtName.replace('-', ' ').toUpperCase()}
+                        <Button variant="text" size="small" onClick={() => handleBack()}>
+                            <img src="https://patronicity.s3.amazonaws.com/static/SponsorLogos/BMS_Icon_NoTag_RGB.JPG" width="30" alt="folder"/>
+                        </Button> 
                     </h1>
-                </Col>
             </Row>
 
             {tab === "Employment Data" && <EmploymentBoard />}

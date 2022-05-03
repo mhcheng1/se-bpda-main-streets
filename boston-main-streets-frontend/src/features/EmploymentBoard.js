@@ -8,14 +8,17 @@ const EmploymentBoard = () => {
     // calcuate summary
     const districtName = useSelector(({district}) => district)
     const businesses = useSelector(({business}) => business)
-    const totalEmp = businesses.map((business) => business.estimated_employment).reduce((a, b) => a+b, 0)
-    const totalBusiness = businesses.length
-    const averageEmp = Math.floor(totalEmp / totalBusiness)
+    const totalEmp = businesses.map((business) => business.estimated_employment).reduce((a, b) => a+b, 0) 
+    const totalBusiness = businesses.length  
+    const averageEmp = Math.floor(totalEmp / totalBusiness).toLocaleString('en-US');  
 
     const cardTitles = [
-        { title: "Estimated Number of Employees:", text: totalEmp },
-        { title: "Total Number of Businesses:", text: totalBusiness },
-        { title: "Average Employment Size:", text: averageEmp }
+        { title: "Estimated Number of Employees:", text: totalEmp.toLocaleString('en-US') },
+        { title: "Total Number of Businesses:", text: totalBusiness.toLocaleString('en-US') },
+    ]
+
+    const cardTitlesEmployment = [
+        { title: "Average Employment Size:", text: averageEmp + " Per Business" }
     ]
 
     if (businesses.length === 0) {
@@ -24,12 +27,20 @@ const EmploymentBoard = () => {
         )
     }
 
+    const localStyle = {
+        marginTop: '10px',
+    };
     return (
         <>
             <Row>
                 <Col>
                     <CardGroup>
                         {cardTitles.map((card, index) => (
+                            <CardItem key={index} title={card.title} text={card.text} />
+                        ))}
+                    </CardGroup>
+                    <CardGroup style={localStyle}>
+                        {cardTitlesEmployment.map((card, index) => (
                             <CardItem key={index} title={card.title} text={card.text} />
                         ))}
                     </CardGroup>
