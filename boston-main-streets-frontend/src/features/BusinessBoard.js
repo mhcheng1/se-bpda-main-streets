@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Button, FormControl } from "react-bootstrap";
-import CardItem from "../components/CardItem";
+import CardItem from "../components/BusinessCardItem";
 import BusinessForm from "./BusinessForm";
 import { removeMapBusiness, setMapBusiness } from "../reducers/mapBusinessReducer";
 
