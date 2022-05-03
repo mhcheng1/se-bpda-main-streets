@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import MainPage from "./pages/MainPage";
 import UploadPage from "./pages/UploadPage";
+import './style.css';
 
 const App = () => {
 
@@ -44,6 +45,7 @@ const App = () => {
       <Route path={"/"}>
         <MainPage />
       </Route>
+      <div className="my-component" />
     </Switch>
   )
 }

@@ -2,6 +2,7 @@ import papaparse from "papaparse";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import spendingService from "../services/spendingService";
+import { useHistory } from "react-router-dom";
 
 const UploadPage = () => {
 
