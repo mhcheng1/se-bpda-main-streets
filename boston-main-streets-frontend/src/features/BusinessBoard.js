@@ -44,22 +44,22 @@ const BusinessesBoard = () => {
     return (
         <Row>
             <FormControl type="search" onChange={({target}) => setKeyWord(target.value)} placeholder="Search" value={keyWord} />
-            {businessData.map((business, index) => (
-                <CardItem key={index} title={<Button variant="link" onClick={() => handleView(business)}> {business.business_name.toUpperCase()} </Button>} text={`Address: ${business.street_address}`}>
-                    <Row>
-                        <Col>
-                            <Button variant="link" onClick={() => handleView()}>Website</Button>
-                        </Col>
-                        <Col>
-                            {
-                                user
-                                    ? <Button variant="link" onClick={() => handleUpdate(business)}>Update</Button>
-                                    : <Button variant="link" onClick={() => handleUpdate(business)} disabled>Update</Button>
-                            }
-                        </Col>
-                    </Row>
-                </CardItem>
-            ))}
+                {businessData.map((business, index) => (
+                    <CardItem key={index} title={<Button variant="link" onClick={() => handleView(business)}> {business.business_name.toUpperCase()} </Button>} text={`Address: ${business.street_address}`}>
+                        <Row style = {{"padding-bottom" : "40px"}}>
+                            <Col>
+                                <Button variant="link" onClick={() => handleView()}>Website</Button>
+                            </Col>
+                            <Col>
+                                {
+                                    user
+                                        ? <Button variant="link" onClick={() => handleUpdate(business)}>Update</Button>
+                                        : <Button variant="link" onClick={() => handleUpdate(business)} disabled>Update</Button>
+                                }
+                            </Col>
+                        </Row>
+                    </CardItem>
+                ))}
         </Row>
     )
 }
