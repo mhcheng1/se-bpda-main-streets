@@ -45,10 +45,9 @@ const BusinessesBoard = () => {
         <Row>
             <FormControl type="search" onChange={({target}) => setKeyWord(target.value)} placeholder="Search" value={keyWord} />
             {businessData.map((business, index) => (
-                <CardItem key={index} title={business.business_name.toUpperCase()} text={`address: ${business.street_address}`}>
+                <CardItem key={index} title={<Button variant="link" onClick={() => handleView(business)}> {business.business_name.toUpperCase()} </Button>} text={`Address: ${business.street_address}`}>
                     <Row>
                         <Col>
-                            <Button variant="link" onClick={() => handleView(business)}>View</Button>
                             <Button variant="link" onClick={() => handleView(business)}>Website</Button>
                         </Col>
                         <Col>
