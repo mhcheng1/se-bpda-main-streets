@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 const CardItem = (props) => {
 
     return (
-        <Card border="primary">
+        <Card style={{ width: '18rem' }}>
             <Card.Body>
                 <Card.Text>{props.title}</Card.Text>
                 <h4>{props.text}</h4>

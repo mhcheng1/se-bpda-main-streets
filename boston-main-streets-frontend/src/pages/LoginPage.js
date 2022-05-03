@@ -29,11 +29,10 @@ const LoginPage = () => {
             <h3>Login</h3>
             <UserForm handleSubmit={handleLogin} ref={userFormRef}>
                 <Button variant="primary" type="submit">Login</Button>
-                <Button variant="secondary" onClick={() => history.push("/signup")}>Create an account</Button>
                 <Button variant="secondary" onClick={() => history.push("/")}>Back</Button>
             </UserForm>
         </div>
     )
 }
-
+// </UserForm>Button variant="secondary" onClick={() => history.push("/signup")}>Create an account</Button>
 export default LoginPage
