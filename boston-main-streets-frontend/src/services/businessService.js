@@ -1,8 +1,8 @@
 import axios from "axios";
-// const prefix = (window.location.hostname === "localhost") ? (process.env.REACT_APP_URL_BACKEND) : ""
-// const baseURL = `${prefix}/api/business`
+const prefix = (window.location.hostname === "localhost") ? (process.env.REACT_APP_URL_BACKEND) : ""
+const baseURL = `${prefix}/api/business`
 
-const baseURL = '/api/business'
+// const baseURL = '/api/business'
 
 const getAllBusiness = async () => {
     const res = await axios.get(baseURL)
